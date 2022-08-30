@@ -1,0 +1,56 @@
+diff --git a/node_modules/@reservoir0x/sdk/dist/common/addresses.js b/node_modules/@reservoir0x/sdk/dist/common/addresses.js
+index 2e2144b..f0e2f2f 100644
+--- a/node_modules/@reservoir0x/sdk/dist/common/addresses.js
++++ b/node_modules/@reservoir0x/sdk/dist/common/addresses.js
+@@ -16,6 +16,7 @@ exports.Eth = {
+     [utils_1.Network.AvalancheFuji]: constants_1.AddressZero,
+     [utils_1.Network.Avalanche]: constants_1.AddressZero,
+     [utils_1.Network.PolygonMumbai]: constants_1.AddressZero,
++    [utils_1.Network.BSC]: constants_1.AddressZero,
+ };
+ exports.Weth = {
+     [utils_1.Network.Ethereum]: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+@@ -32,6 +33,8 @@ exports.Weth = {
+     // Avalanche: Wrapped AVAX
+     [utils_1.Network.Avalanche]: "0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7",
+     [utils_1.Network.AvalancheFuji]: "0x1d308089a2d1ced3f1ce36b1fcaf815b07217be3",
++    // BSC
++    [utils_1.Network.BSC]: "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+ };
+ exports.Routers = {
+     [utils_1.Network.Ethereum]: {
+diff --git a/node_modules/@reservoir0x/sdk/dist/utils.js b/node_modules/@reservoir0x/sdk/dist/utils.js
+index c5455f3..8c52bce 100644
+--- a/node_modules/@reservoir0x/sdk/dist/utils.js
++++ b/node_modules/@reservoir0x/sdk/dist/utils.js
+@@ -42,5 +42,7 @@ var Network;
+     // Avalanche
+     Network[Network["Avalanche"] = 43114] = "Avalanche";
+     Network[Network["AvalancheFuji"] = 43113] = "AvalancheFuji";
++    // BSC
++    Network[Network["AvalancheFuji"] = 56] = "BSC";
+ })(Network = exports.Network || (exports.Network = {}));
+ //# sourceMappingURL=utils.js.map
+\ No newline at end of file
+diff --git a/node_modules/@reservoir0x/sdk/dist/x2y2/index.js b/node_modules/@reservoir0x/sdk/dist/x2y2/index.js
+index 444be95..fcaf14e 100644
+--- a/node_modules/@reservoir0x/sdk/dist/x2y2/index.js
++++ b/node_modules/@reservoir0x/sdk/dist/x2y2/index.js
+@@ -20,12 +20,12 @@ var __importStar = (this && this.__importStar) || function (mod) {
+ };
+ Object.defineProperty(exports, "__esModule", { value: true });
+ exports.Types = exports.Order = exports.Exchange = exports.Addresses = void 0;
+-const Addresses = __importStar(require("./addresses"));
++const Addresses = __importStar(require("@reservoir0x/sdk/dist/x2y2/addresses"));
+ exports.Addresses = Addresses;
+-const exchange_1 = require("./exchange");
++const exchange_1 = require("@reservoir0x/sdk/dist/x2y2/exchange");
+ Object.defineProperty(exports, "Exchange", { enumerable: true, get: function () { return exchange_1.Exchange; } });
+-const order_1 = require("./order");
++const order_1 = require("@reservoir0x/sdk/dist/x2y2/order");
+ Object.defineProperty(exports, "Order", { enumerable: true, get: function () { return order_1.Order; } });
+-const Types = __importStar(require("./types"));
++const Types = __importStar(require("@reservoir0x/sdk/dist/x2y2/types"));
+ exports.Types = Types;
+ //# sourceMappingURL=index.js.map
+\ No newline at end of file

@@ -82,6 +82,8 @@ const CartMenu: FC = () => {
     addressOrName: address,
   })
 
+  console.log(balance)
+
   const execute = async (signer: Signer) => {
     setWaitingTx(true)
 

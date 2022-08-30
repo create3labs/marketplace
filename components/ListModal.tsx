@@ -312,7 +312,7 @@ const ListModal: FC<Props> = ({
                   htmlFor="price"
                   className="reservoir-h6 font-headings dark:text-white"
                 >
-                  Price (ETH)
+                  Price (BNB)
                 </label>
                 <input
                   placeholder="Amount"

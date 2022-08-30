@@ -10,7 +10,7 @@ import { paths } from '@reservoir0x/reservoir-kit-client'
 
 type Props = {
   attributes: SWRResponse<
-    paths['/collections/{collection}/attributes/all/v1']['get']['responses']['200']['schema']
+    paths['/collections/{collection}/attributes/all/v2']['get']['responses']['200']['schema']
   >
   setTokensSize: SWRInfiniteResponse['setSize']
 }

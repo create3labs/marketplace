@@ -115,6 +115,8 @@ const TokenOfferModal: FC<Props> = ({ env, royalties, data, setToast }) => {
 
   useEffect(() => {
     const userInput = utils.parseEther(offerPrice === '' ? '0' : offerPrice)
+    console.log("offerPrice", offerPrice)
+    console.log(weth)
     if (weth?.balance && ethBalance?.value) {
       const calculations = calculateOffer(
         userInput,

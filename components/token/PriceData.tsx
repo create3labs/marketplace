@@ -170,6 +170,8 @@ const PriceData: FC<Props> = ({ details, collection }) => {
               <button
                 disabled={!token?.market?.floorAsk?.price}
                 onClick={() => {
+                    console.log(tokenId)
+                    console.log(contract)
                   if (tokenId && contract) {
                     setCartTokens([
                       ...cartTokens,

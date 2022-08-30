@@ -16,7 +16,7 @@ import 'styles/gothicusroman.css'
 import 'styles/roobert.css'
 import 'styles/rodger.css'
 import type { AppProps } from 'next/app'
-import { WagmiConfig, createClient, allChains, configureChains } from 'wagmi'
+import { WagmiConfig, createClient, allChains, configureChains, Chain } from 'wagmi'
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet'
 import { InjectedConnector } from 'wagmi/connectors/injected'
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
@@ -54,7 +54,25 @@ const DISABLE_POWERED_BY_RESERVOIR =
 import presetColors from '../colors'
 
 // Set up chains
-const { chains, provider } = configureChains(allChains, [
+
+const bscChain: Chain = {
+  id: 56,
+  name: 'BSC',
+  network: 'bsc',
+  nativeCurrency: {
+    decimals: 18,
+    name: 'BNB',
+    symbol: 'BNB',
+  },
+  rpcUrls: {
+    default: 'https://rpc.ankr.com/bsc',
+  },
+  blockExplorers: {
+    default: { name: 'BscScan', url: 'https://bscscan.com' },
+  },
+  testnet: false,
+}
+const { chains, provider } = configureChains([bscChain], [
   alchemyProvider({ alchemyId }),
   publicProvider(),
 ])
