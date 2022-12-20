@@ -1,5 +1,5 @@
-import { ContractInterface } from 'ethers'
-import {useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
+import { Abi } from 'abitype'
 import { useAccount, useContractRead, useContractWrite, usePrepareContractWrite, useWaitForTransaction } from 'wagmi'
 
 type CollectionInteractionResponse = {
@@ -10,12 +10,12 @@ type CollectionInteractionResponse = {
 }
 
 
-export default function useCollectionInteractions(addressOrName: string, tokenId: string, functionName: string, contractInterface: ContractInterface, args: any, overrides?: any) {
+export default function useCollectionInteractions(address: string, tokenId: string, functionName: string, abi: Abi, args: any, overrides?: any) {
   const [func, setFunc] = useState<CollectionInteractionResponse | undefined>()
 
   const { config, error } = usePrepareContractWrite({
-    addressOrName,
-    contractInterface,
+    address,
+    abi,
     functionName,
     args,
     overrides,

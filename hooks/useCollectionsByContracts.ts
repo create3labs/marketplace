@@ -5,8 +5,9 @@ import { useEffect } from 'react'
 import fetcher from 'lib/fetcher'
 import setParams from 'lib/params'
 import useSWRInfinite, { SWRInfiniteKeyLoader } from 'swr/infinite'
-import { PROXY_API_BASE } from './useCollections'
 import { ContractMethodDoesNotExistError } from '@wagmi/core'
+
+const PROXY_API_BASE = process.env.NEXT_PUBLIC_PROXY_API_BASE
 
 type Collections = paths['/collections/v5']['get']['responses']['200']['schema']
 
