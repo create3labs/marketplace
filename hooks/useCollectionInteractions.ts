@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
+import { Abi } from 'abitype'
 import { useAccount, useContractRead, useContractWrite, usePrepareContractWrite, useWaitForTransaction } from 'wagmi'
 
 type CollectionInteractionResponse = {
@@ -9,7 +10,7 @@ type CollectionInteractionResponse = {
 }
 
 
-export default function useCollectionInteractions(address: string, tokenId: string, functionName: string, abi: any, args: any, overrides?: any) {
+export default function useCollectionInteractions(address: string, tokenId: string, functionName: string, abi: Abi, args: any, overrides?: any) {
   const [func, setFunc] = useState<CollectionInteractionResponse | undefined>()
 
   const { config, error } = usePrepareContractWrite({
