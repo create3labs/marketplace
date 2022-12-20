@@ -10,12 +10,12 @@ type CollectionInteractionResponse = {
 }
 
 
-export default function useCollectionInteractions(addressOrName: string, tokenId: string, functionName: string, contractInterface: ContractInterface, args: any, overrides?: any) {
+export default function useCollectionInteractions(address: string, tokenId: string, functionName: string, abi: ContractInterface, args: any, overrides?: any) {
   const [func, setFunc] = useState<CollectionInteractionResponse | undefined>()
 
   const { config, error } = usePrepareContractWrite({
-    addressOrName,
-    contractInterface,
+    address,
+    abi,
     functionName,
     args,
     overrides,
