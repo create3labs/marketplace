@@ -142,7 +142,7 @@ const App: FC<AppProps & { baseUrl: string }> = ({
     | undefined
   >()
   const marketplaceTheme = THEME_SWITCHING_ENABLED ? theme : defaultTheme
-
+  console.log(THEME_SWITCHING_ENABLED, 'THEME_SWITCHING_ENABLED')
   useEffect(() => {
     const primaryColor = (PRIMARY_COLOR as string) || 'default'
     const primaryColorPalette = (

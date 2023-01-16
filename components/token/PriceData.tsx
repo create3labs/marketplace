@@ -27,6 +27,7 @@ import ConnectWalletButton from 'components/ConnectWalletButton'
 import useMounted from 'hooks/useMounted'
 import { useRouter } from 'next/router'
 import { getPricing } from 'lib/token/pricing'
+import BidModalWrapper from 'components/modal/bid/BidModalWrapper'
 
 const CHAIN_ID = process.env.NEXT_PUBLIC_CHAIN_ID
 const SOURCE_ID = process.env.NEXT_PUBLIC_SOURCE_ID
@@ -351,6 +352,23 @@ const PriceData: FC<Props> = ({ details, collection, isOwner }) => {
                   }}
                 />
               )}
+
+              {!isOwner && (
+                <BidModalWrapper
+                  collectionId={collection?.id}
+                  tokenId={token?.token?.tokenId}
+                  trigger={
+                    <button
+                      disabled={isInTheWrongNetwork}
+                      className="btn-primary-outline w-full dark:border-neutral-600 dark:text-white dark:ring-primary-900 dark:focus:ring-4"
+                    >
+                      Make Offer
+                    </button>
+                  }
+                />
+
+              )}
+
 
               <CancelOffer
                 data={{

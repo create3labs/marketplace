@@ -1,4 +1,5 @@
 import Layout from 'components/Layout'
+import { useAccount } from 'wagmi'
 import setParams from 'lib/params'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { useRouter } from 'next/router'
@@ -19,7 +20,6 @@ import {
   useCollections,
   useUserTokens,
 } from '@reservoir0x/reservoir-kit-ui'
-import { useAccount } from 'wagmi'
 
 // Environment variables
 // For more information about these variables
