@@ -1,11 +1,12 @@
 import { FC, useEffect } from 'react'
-import LoadingCard from './LoadingCard'
+import { useRouter } from 'next/router'
 import { useUserTokens } from '@reservoir0x/reservoir-kit-ui'
 import { useInView } from 'react-intersection-observer'
-import TokenCard from './TokenCard'
 import { paths } from '@reservoir0x/reservoir-kit-client'
+import LoadingCard from './LoadingCard'
+import TokenCard from './TokenCard'
 
-const COLLECTION = process.env.NEXT_PUBLIC_COLLECTION
+const COLLECTION_ID = process.env.NEXT_PUBLIC_COLLECTION
 const COMMUNITY = process.env.NEXT_PUBLIC_COMMUNITY
 const COLLECTION_SET_ID = process.env.NEXT_PUBLIC_COLLECTION_SET_ID
 
@@ -17,6 +18,8 @@ type Props = {
 }
 
 const UserTokensGrid: FC<Props> = ({ fallback, owner }) => {
+  const router = useRouter()
+  
   const userTokensParams: Parameters<typeof useUserTokens>['1'] = {
     limit: 20,
     includeTopBid: true,
@@ -27,6 +30,7 @@ const UserTokensGrid: FC<Props> = ({ fallback, owner }) => {
     if (COMMUNITY) userTokensParams.community = COMMUNITY
   }
 
+  const COLLECTION = COLLECTION_ID || router.query.collection?.toString()
   if (COLLECTION && (!COMMUNITY || !COLLECTION_SET_ID)) {
     userTokensParams.collection = COLLECTION
   }
