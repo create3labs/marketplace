@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="border-t-2 border-t-gray-200 py-4">
         </div>
       </div>
-      <div className="col-span-2 text-xs">© 2022 SHOWROOM</div>
+      <div className="col-span-2 text-xs">© 2023 ZENPORT</div>
       <div className="col-span-2 text-right">
         <Link href="/privacy-policy"><span className="text-xs cursor-pointer">Privacy Policy</span></Link>
         <br />

@@ -29,9 +29,9 @@ const TermsOfService: NextPage = () => {
           <Paragraph>Last updated: 2022-11-01</Paragraph>
           <H2>1. Introduction</H2>
           <Paragraph>
-            Welcome to SHOWROOM (“Company”, “we”, “our”, “us”)!
+            Welcome to ZENPORT (“Company”, “we”, “our”, “us”)!
             <br /><br />
-            These Terms of Service (“Terms”, “Terms of Service”) govern your use of our website located at showroom.art (together or individually “Service”) operated by SHOWROOM.
+            These Terms of Service (“Terms”, “Terms of Service”) govern your use of our website located at zenport.xyz (together or individually “Service”) operated by ZENPORT.
             <br /><br />
             Our Privacy Policy also governs your use of our Service and explains how we collect, safeguard and disclose information that results from your use of our web pages.
             <br /><br />
@@ -47,20 +47,20 @@ const TermsOfService: NextPage = () => {
               <li>The value of an NFTs is subjective. Prices of NFTs are subject to volatility and fluctuations in the price of cryptocurrency can also materially and adversely affect NFT prices. You acknowledge that you fully understand this subjectivity and volatility and that you may lose money.</li>
               <li>A lack of use or public interest in the creation and development of distributed ecosystems could negatively impact the development of those ecosystems and related applications, and could therefore also negatively impact the potential utility of NFTs.</li>
               <li>The regulatory regime governing blockchain technologies, non-fungible tokens, cryptocurrency, and other crypto-based items is uncertain, and new regulations or policies may materially adversely affect the development of the Service and the utility of NFTs.</li>
-              <li>You are solely responsible for determining what, if any, taxes apply to your transactions. SHOWROOM is not responsible for determining the taxes that apply to your NFTs.</li>
+              <li>You are solely responsible for determining what, if any, taxes apply to your transactions. ZENPORT is not responsible for determining the taxes that apply to your NFTs.</li>
               <li>There are risks associated with purchasing items associated with content created by third parties through peer-to-peer transactions, including but not limited to, the risk of purchasing counterfeit items, mislabeled items, items that are vulnerable to metadata decay, items on smart contracts with bugs, and items that may become untransferable. You represent and warrant that you have done sufficient research before making any decisions to sell, obtain, transfer, or otherwise interact with any NFTs or accounts/collections.</li>
-              <li>We do not control the public blockchains that you are interacting with and we do not control certain smart contracts and protocols that may be integral to your ability to complete transactions on these public blockchains. Additionally, blockchain transactions are irreversible and SHOWROOM has no ability to reverse any transactions on the blockchain.</li>
-              <li>There are risks associated with using Internet and blockchain based products, including, but not limited to, the risk associated with hardware, software, and Internet connections, the risk of malicious software introduction, and the risk that third parties may obtain unauthorized access to your third-party wallet or Account. You accept and acknowledge that SHOWROOM will not be responsible for any communication failures, disruptions, errors, distortions or delays you may experience when using the Service or any Blockchain network, however caused.</li>
+              <li>We do not control the public blockchains that you are interacting with and we do not control certain smart contracts and protocols that may be integral to your ability to complete transactions on these public blockchains. Additionally, blockchain transactions are irreversible and ZENPORT has no ability to reverse any transactions on the blockchain.</li>
+              <li>There are risks associated with using Internet and blockchain based products, including, but not limited to, the risk associated with hardware, software, and Internet connections, the risk of malicious software introduction, and the risk that third parties may obtain unauthorized access to your third-party wallet or Account. You accept and acknowledge that ZENPORT will not be responsible for any communication failures, disruptions, errors, distortions or delays you may experience when using the Service or any Blockchain network, however caused.</li>
               <li>The Service relies on third-party platforms and/or vendors. If we are unable to maintain a good relationship with such platform providers and/or vendors; if the terms and conditions or pricing of such platform providers and/or vendors change; if we violate or cannot comply with the terms and conditions of such platforms and/or vendors; or if any of such platforms and/or vendors loses market share or falls out of favor or is unavailable for a prolonged period of time, access to and use of the Service will suffer.</li>
-              <li>SHOWROOM reserves the right to hide collections, contracts, and items affected by any of these issues or by other issues. Items you purchase may become inaccessible on SHOWROOM. Under no circumstances shall the inability to view items on SHOWROOM or an inability to use the Service in conjunction with the purchase, sale, or transfer of items available on any blockchains serve as grounds for a claim against SHOWROOM.</li>
+              <li>ZENPORT reserves the right to hide collections, contracts, and items affected by any of these issues or by other issues. Items you purchase may become inaccessible on ZENPORT. Under no circumstances shall the inability to view items on ZENPORT or an inability to use the Service in conjunction with the purchase, sale, or transfer of items available on any blockchains serve as grounds for a claim against ZENPORT.</li>
               <li>If you have a dispute with one or more users, YOU RELEASE US FROM CLAIMS, DEMANDS, AND DAMAGES OF EVERY KIND AND NATURE, KNOWN AND UNKNOWN, ARISING OUT OF OR IN ANY WAY CONNECTED WITH SUCH DISPUTES. IN ENTERING INTO THIS RELEASE YOU EXPRESSLY WAIVE ANY PROTECTIONS (WHETHER STATUTORY OR OTHERWISE) THAT WOULD OTHERWISE LIMIT THE COVERAGE OF THIS RELEASE TO INCLUDE THOSE CLAIMS WHICH YOU MAY KNOW OR SUSPECT TO EXIST IN YOUR FAVOR AT THE TIME OF AGREEING TO THIS RELEASE.</li>
             </ul>
             <div className="not-sure-y-needed-but-otherwise-styling-broken" />
           </Paragraph>
           <H2>3. Proprietary Rights</H2>
-          <Paragraph>The intellectual property generated by core contributors to SHOWROOM and all material generated by Service are the property of SHOWROOM. You may not distribute, modify, transmit, reuse, download, repost, copy, or use said Content, whether in whole or in part, for commercial purposes or for personal gain, without express advance written permission from us.</Paragraph>
+          <Paragraph>The intellectual property generated by core contributors to ZENPORT and all material generated by Service are the property of ZENPORT. You may not distribute, modify, transmit, reuse, download, repost, copy, or use said Content, whether in whole or in part, for commercial purposes or for personal gain, without express advance written permission from us.</Paragraph>
           <H2>4. Third-Party Content and Services</H2>
-          <Paragraph>SHOWROOM helps you explore NFTs created by third parties and interact with different blockchains. SHOWROOM does not make any representations or warranties about this third-party content visible through our Service, including any content associated with NFTs displayed on the Service, and you bear responsibility for verifying the legitimacy, authenticity, and legality of NFTs that you purchase from third-party sellers. We also cannot guarantee that any NFTs visible on SHOWROOM will always remain visible and/or available to be bought, sold, or transferred.</Paragraph>
+          <Paragraph>ZENPORT helps you explore NFTs created by third parties and interact with different blockchains. ZENPORT does not make any representations or warranties about this third-party content visible through our Service, including any content associated with NFTs displayed on the Service, and you bear responsibility for verifying the legitimacy, authenticity, and legality of NFTs that you purchase from third-party sellers. We also cannot guarantee that any NFTs visible on ZENPORT will always remain visible and/or available to be bought, sold, or transferred.</Paragraph>
           <H2>5. Prohibited Uses</H2>
           <Paragraph>
             You may use Service only for lawful purposes and in accordance with Terms. You agree not to use Service:
@@ -84,7 +84,7 @@ const TermsOfService: NextPage = () => {
               <li>Introduce any viruses, trojan horses, worms, logic bombs, or other material which is malicious or technologically harmful.</li>
               <li>Attempt to gain unauthorized access to, interfere with, damage, or disrupt any parts of Service, the server on which Service is stored, or any server, computer, or database connected to Service.</li>
               <li>Attack Service via a denial-of-service attack or a distributed denial-of-service attack.</li>
-              <li>Bypass any instructions that control access to the Service, including attempting to circumvent any rate limiting systems by using multiple API keys, or obfuscating the source of traffic you send to SHOWROOM;</li>
+              <li>Bypass any instructions that control access to the Service, including attempting to circumvent any rate limiting systems by using multiple API keys, or obfuscating the source of traffic you send to ZENPORT;</li>
               <li>Take any action that may damage or falsify Company rating.</li>
               <li>Otherwise attempt to interfere with the proper working of Service.</li>
             </ol>
@@ -94,7 +94,7 @@ const TermsOfService: NextPage = () => {
           <H2>7. No Use By Minors</H2>
           <Paragraph>Service is intended only for access and use by individuals at least eighteen (18) years old. By accessing or using Service, you warrant and represent that you are at least eighteen (18) years of age and with the full authority, right, and capacity to enter into this agreement and abide by all of the terms and conditions of Terms. If you are not at least eighteen (18) years old, you are prohibited from both the access and usage of Service.</Paragraph>
           <H2>8. Intellectual Property</H2>
-          <Paragraph>Service and its original content (excluding Content provided by users), features and functionality are and will remain the exclusive property of SHOWROOM and its licensors. Service is protected by copyright, trademark, and other laws of and foreign countries. Our trademarks may not be used in connection with any product or service without the prior written consent of SHOWROOM.</Paragraph>
+          <Paragraph>Service and its original content (excluding Content provided by users), features and functionality are and will remain the exclusive property of ZENPORT and its licensors. Service is protected by copyright, trademark, and other laws of and foreign countries. Our trademarks may not be used in connection with any product or service without the prior written consent of ZENPORT.</Paragraph>
           <H2>9. Copyright Policy</H2>
           <Paragraph>
             We respect the intellectual property rights of others. It is our policy to respond to any claim that Content posted on Service infringes on the copyright or other intellectual property rights (“Infringement”) of any person or entity.
@@ -122,9 +122,9 @@ const TermsOfService: NextPage = () => {
           <Paragraph>You may provide us either directly on Discord at https://discord.gg/dzVzMdp or via third party sites and tools with information and feedback concerning errors, suggestions for improvements, ideas, problems, complaints, and other matters related to our Service (“Feedback”). You acknowledge and agree that: (i) you shall not retain, acquire or assert any intellectual property right or other right, title or interest in or to the Feedback; (ii) Company may have development ideas similar to the Feedback; (iii) Feedback does not contain confidential information or proprietary information from you or any third party; and (iv) Company is not under any obligation of confidentiality with respect to the Feedback. In the event the transfer of the ownership to the Feedback is not possible due to applicable mandatory laws, you grant Company and its affiliates an exclusive, transferable, irrevocable, free-of-charge, sub-licensable, unlimited and perpetual right to use (including copy, modify, create derivative works, publish, distribute and commercialize) Feedback in any manner and for any purpose.</Paragraph>
           <H2>12. Links To Other Web Sites</H2>
           <Paragraph>
-            Our Service may contain links to third party web sites or services that are not owned or controlled by SHOWROOM.
+            Our Service may contain links to third party web sites or services that are not owned or controlled by ZENPORT.
             <br /><br />
-            SHOWROOM has no control over, and assumes no responsibility for the content, privacy policies, or practices of any third party web sites or services. We do not warrant the offerings of any of these entities/individuals or their websites.
+            ZENPORT has no control over, and assumes no responsibility for the content, privacy policies, or practices of any third party web sites or services. We do not warrant the offerings of any of these entities/individuals or their websites.
             <br /><br />
             YOU ACKNOWLEDGE AND AGREE THAT COMPANY SHALL NOT BE RESPONSIBLE OR LIABLE, DIRECTLY OR INDIRECTLY, FOR ANY DAMAGE OR LOSS CAUSED OR ALLEGED TO BE CAUSED BY OR IN CONNECTION WITH USE OF OR RELIANCE ON ANY SUCH CONTENT, GOODS OR SERVICES AVAILABLE ON OR THROUGH ANY SUCH THIRD PARTY WEB SITES OR SERVICES.
             <br /><br />
@@ -180,7 +180,7 @@ const TermsOfService: NextPage = () => {
           </Paragraph>
           <H2>21. Contact Us</H2>
           <Paragraph>
-            Please send your feedback, comments, requests for technical support on Discord https://discord.gg/dzVzMdp.
+            Please send your feedback, comments, requests for technical support on Discord.
           </Paragraph>
         </div>
       </div>

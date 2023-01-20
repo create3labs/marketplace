@@ -75,22 +75,22 @@ const envChain = allChains.find(
 const allChainsExtended = [
   ...allChains,
   {
-    id: 45_000,
-    name: 'Autobahn Network',
-    network: 'autobahn',
+    id: 1661,
+    name: 'Horizen EVM',
+    network: 'horizen',
     nativeCurrency: {
       decimals: 18,
-      name: 'TXL',
-      symbol: 'TXL',
+      name: 'ZEN',
+      symbol: 'ZEN',
     },
     rpcUrls: {
-      default: 'https://autobahn-rpc.com',
+      default: 'https://evm-tn-m2.horizenlabs.io/ethv1',
     },
     testnet: false,
     blockExplorers: {
       default: {
-        name: 'Autobahn Explorer',
-        url: 'https://autobahn-explorer.com',
+        name: 'Horizen Explorer',
+        url: 'https://blockscout.horizenlabstools.net/',
       },
     },
   },
