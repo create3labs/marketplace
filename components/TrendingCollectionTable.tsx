@@ -21,14 +21,6 @@ type Props = {
   }
 }
 
-// some that have just been created for testing
-const whitelistedCollections = [
-  '0xfe7a68730499413a5819ab5f68191aac4b3ca7b5', // Autobahn Genesis Cars
-  '0xc078e2264f06480380b1ddc31cbd573fb16ba01d', //, // Hodlers Club NFTs
-  '0x67158b788968f78541847bce0bc9c495ed526831', // Autobahn Raffle Tickets
-  '0x2445c2468fbc777629e92c09f4a6f1973a6eb038', // Advent Calendar Raffle Tickets
-]
-
 const TrendingCollectionTable: FC<Props> = ({ fallback }) => {
   const isSmallDevice = useMediaQuery('only screen and (max-width : 600px)')
   const router = useRouter()
@@ -76,7 +68,7 @@ const TrendingCollectionTable: FC<Props> = ({ fallback }) => {
           </tr>
         </thead>
         <tbody>
-          {mappedCollections?.filter(collection => whitelistedCollections.indexOf(collection?.id!) > -1).map((collection, index, arr) => {
+          {mappedCollections?.map((collection, index, arr) => {
             const {
               contract,
               tokenHref,
