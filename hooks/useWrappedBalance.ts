@@ -15,7 +15,7 @@ export default function (params: any) {
   const contractAddress =
     chain?.id !== undefined && chain.id in wrappedContracts
       ? wrappedContracts[chain.id]
-      : wrappedContracts[1]
+      : wrappedContracts[45000]
 
   const balance = useBalance({
     ...params,

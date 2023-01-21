@@ -2,11 +2,9 @@ import React, { ComponentPropsWithoutRef, FC } from 'react'
 import { Flex, Box, Grid, Text } from '../../reservoirComponents'
 import TokenStatsHeader from './TokenStatsHeader'
 import Stat from '../Stat'
-
+import { Trait, useCollections, useTokens } from '@reservoir0x/reservoir-kit-ui'
 import InfoTooltip from '../InfoTooltip'
-import { Trait } from './BidModalWrapper'
 import SelectedAttribute from './SelectedAttribute'
-import { useCollections, useTokens } from '@reservoir0x/reservoir-kit-ui'
 
 type Props = {
   token?: NonNullable<NonNullable<ReturnType<typeof useTokens>>['data']>['0']
@@ -53,10 +51,12 @@ const TokenStats: FC<Props> = ({ token, collection, trait }) => {
           Highest Offer
         </Text>
       ),
-      value: token
-        ? token.market?.topBid?.price?.amount?.native || null
-        : collection?.topBid?.price?.amount?.native || null,
-      asWrapped: true,
+      value: token && token.market?.topBid?.price?.amount?.native
+         ? token.market?.topBid?.price?.amount?.native
+        : collection?.topBid?.price?.amount?.native
+      ? collection?.topBid?.price?.amount?.native
+      : null,
+      asWrapped: false,
     }
   )
 

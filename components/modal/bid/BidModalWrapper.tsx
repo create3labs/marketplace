@@ -6,11 +6,12 @@ import React, {
   SetStateAction,
   ReactNode, useEffect
 } from 'react'
-import { BidModal, useAttributes } from '@reservoir0x/reservoir-kit-ui'
+import { BidModal, Trait, useAttributes } from '@reservoir0x/reservoir-kit-ui'
 import { styled } from '../../../stitches.config'
 import { Text, Flex, Input, Box, Button, RkFormatCryptoCurrency,
   Loader, Popover, PseudoInput, ErrorWell, ProgressBar, TransactionProgress, Select, RkFormatCurrency, CustomDateInput, RkFormatWrappedCurrency } from '../../reservoirComponents'
 import TokenStats from './TokenStats'
+import AttributeSelector from './AttributeSelector'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faClose,
@@ -33,6 +34,8 @@ import { useAccount } from 'wagmi'
 import { parseEther } from 'ethers/lib/utils'
 import { constants } from 'ethers'
 import { formatBN } from '../../../lib/numbers'
+import wrappedContracts from '../../../constants/wrappedContracts'
+import useFallbackState from '../../../hooks/useFallbackState'
 
 export enum ModalSize {
   MD,
@@ -41,13 +44,6 @@ export enum ModalSize {
 
 export type Traits =
   | NonNullable<ReturnType<typeof useAttributes>['data']>
-  | undefined
-
-export type Trait =
-  | {
-  key: string
-  value: string
-}
   | undefined
 
 export type BidData = Parameters<
@@ -67,23 +63,6 @@ type ChildrenProps = {
   attribute?: Trait
   normalizeRoyalties?: boolean
   trigger: ReactNode
-}
-// Pick<Parameters<typeof Modal>['0'], 'trigger'> &
-type MyProps = {
-  openState?: [boolean, Dispatch<SetStateAction<boolean>>]
-  tokenId?: string
-  collectionId?: string
-  // attribute?: Trait
-  // normalizeRoyalties?: boolean
-  onViewOffers?: () => void
-  onClose?: () => void
-  // onBidComplete?: (data: any) => void
-  // onBidError?: (error: Error, data: any) => void
-  children?: (props: ChildrenProps) => ReactNode | Element
-  trigger: ReactNode
-
-  onBidComplete?: (data: any) => void
-  onBidError?: (error: Error, data: any) => void
 }
 
 export enum BidStep {
@@ -136,16 +115,33 @@ const expirationOptions = [
   },
 ]
 
+type MyProps = {
+  openState?: [boolean, Dispatch<SetStateAction<boolean>>]
+  tokenId?: string
+  collectionId?: string
+  attribute?: Trait
+  normalizeRoyalties?: boolean
+  onViewOffers?: () => void
+  onClose?: () => void
+  children?: (props: ChildrenProps) => ReactNode | Element
+  trigger: ReactNode
+  onBidComplete?: (data: any) => void
+  onBidError?: (error: Error, data: any) => void
+}
+
 //@dev - this is a hack to get the bid modal to work with custom properties.
 // https://docs.reservoir.tools/docs/buying#custom-buymodal
-// BidModalWrapper is https://github.com/reservoirprotocol/reservoir-kit/blob/3773ef2af129451a86c98cc15131158539b1b6c0/packages/ui/src/modal/bid/BidModal.tsx
-// BidModal.Custom is https://github.com/reservoirprotocol/reservoir-kit/blob/main/packages/ui/src/modal/bid/BidModalRenderer.tsx
-// CustomReservoirModal is https://github.com/reservoirprotocol/reservoir-kit/blob/main/packages/ui/src/modal/Modal.tsx
+// BidModalWrapper - Wraps BidModal.Custom and CustomReservoirModal | is https://github.com/reservoirprotocol/reservoir-kit/blob/3773ef2af129451a86c98cc15131158539b1b6c0/packages/ui/src/modal/bid/BidModal.tsx
+// BidModal.Custom - (Also Called Renderer - Data Layer Component) | is https://github.com/reservoirprotocol/reservoir-kit/blob/main/packages/ui/src/modal/bid/BidModalRenderer.tsx
+// CustomReservoirModal - Actual Modal that renders front-end components | is https://github.com/reservoirprotocol/reservoir-kit/blob/main/packages/ui/src/modal/Modal.tsx
 
-export default function BidModalWrapper({ openState, tokenId, collectionId, onClose, trigger, children, onViewOffers, onBidComplete,
-                                          onBidError, }: MyProps):ReactElement {
+export default function BidModalWrapper({ openState, tokenId, collectionId, attribute, onClose, trigger, onViewOffers, onBidComplete,
+                                          onBidError, normalizeRoyalties}: MyProps):ReactElement {
 
-   const [open, setOpen] = useState<boolean>(true)
+  const [open, setOpen] = useFallbackState(
+    openState ? openState[0] : false,
+    openState
+  )
   const { address } = useAccount()
   const datetimeElement = useRef<Flatpickr | null>(null)
   const [stepTitle, setStepTitle] = useState('')
@@ -168,72 +164,37 @@ export default function BidModalWrapper({ openState, tokenId, collectionId, onCl
   //   expirationOptions[3]
   // )
 
-
   useEffect(() => {
     setLocalMarketplace(getLocalMarketplaceData())
   }, [])
 
-
-
-
-
-  // if (expirationOption.relativeTime) {
-  //   if (expirationOption.relativeTimeUnit) {
-  //     bid.expirationTime = dayjs()
-  //       .add(expirationOption.relativeTime, expirationOption.relativeTimeUnit)
-  //       .unix()
-  //       .toString()
-  //   } else {
-  //     bid.expirationTime = `${expirationOption.relativeTime}`
-  //   }
-  // }
-
-  // const wrappedContractAddress =
-  //   chainCurrency.chainId in wrappedContracts
-  //     ? wrappedContracts[chainCurrency.chainId]
-  //     : wrappedContracts[1]
+  const wrappedContractAddress = wrappedContracts[45000]
 
   const usdPrice = useCoinConversion(
     'USD',
     'TXL'
   )
 
-
   const minimumDate = dayjs().add(1, 'h').format('MM/DD/YYYY h:mm A')
-  // useEffect(() => {
-  //   if (expirationOption && expirationOption.relativeTime) {
-  //     const newExpirationTime = expirationOption.relativeTimeUnit
-  //       ? dayjs().add(
-  //         expirationOption.relativeTime,
-  //         expirationOption.relativeTimeUnit
-  //       )
-  //       : dayjs.unix(expirationOption.relativeTime)
-  //     setExpirationDate(newExpirationTime.format('MM/DD/YYYY h:mm A'))
-  //   } else {
-  //     setExpirationDate('')
-  //   }
-  // }, [expirationOption])
 
   return (
+    // The renderer - data layer component
     <BidModal.Custom
       open={open}
       tokenId={tokenId}
       collectionId={collectionId}
-      // attribute={attribute}
-      // normalizeRoyalties={normalizeRoyalties}
+      attribute={attribute}
+      normalizeRoyalties={normalizeRoyalties}
     >
-      {({ bidAmountUsd, uniswapConvertLink,token,
+      {({ token,
           collection,
           attributes,
-
           isBanned,
           balance,
-
           bidAmount,
           bidData,
           bidStep,
           hasEnoughNativeCurrency,
-
           transactionError,
           expirationOption,
           expirationOptions,
@@ -251,7 +212,6 @@ export default function BidModalWrapper({ openState, tokenId, collectionId, onCl
 
         // eslint-disable-next-line react-hooks/rules-of-hooks
         const [expirationDate, setExpirationDate] = useState('')
-
         const [hasEnoughWrappedCurrency, setHasEnoughWrappedCurrency] =
           // eslint-disable-next-line react-hooks/rules-of-hooks
           useState(false)
@@ -267,7 +227,6 @@ export default function BidModalWrapper({ openState, tokenId, collectionId, onCl
           token && token.token?.image
             ? token.token?.image
             : (collection?.image as string)
-
 
         // eslint-disable-next-line react-hooks/rules-of-hooks
         useEffect(() => {
@@ -291,6 +250,30 @@ export default function BidModalWrapper({ openState, tokenId, collectionId, onCl
           }
         }, [bidAmount, balance, wrappedBalance])
 
+        // eslint-disable-next-line react-hooks/rules-of-hooks
+        useEffect(() => {
+          if (stepData) {
+            switch (stepData.currentStep.kind) {
+              case 'signature': {
+                setStepTitle('Confirm Offer')
+                break
+              }
+              default: {
+                setStepTitle(stepData.currentStep.action)
+                break
+              }
+            }
+            // Change title of the Wrapping Approve Title
+            // From Wrapping ETH to Wrapping TXL
+            switch (stepData.currentStep.action) {
+              case 'Wrapping ETH': {
+                setStepTitle('Wrapping TXL')
+                break
+            }
+
+            }
+          }
+        }, [stepData])
 
         // eslint-disable-next-line react-hooks/rules-of-hooks
         useEffect(() => {
@@ -309,35 +292,57 @@ export default function BidModalWrapper({ openState, tokenId, collectionId, onCl
         }, [expirationOption])
 
         // eslint-disable-next-line react-hooks/rules-of-hooks
-        // useEffect(() => {
-        //   if (stepData) {
-        //     switch (stepData.currentStep.kind) {
-        //       case 'signature': {
-        //         setStepTitle('Confirm Offer')
-        //         break
-        //       }
-        //       default: {
-        //         setStepTitle(stepData.currentStep.action)
-        //         break
-        //       }
-        //     }
-        //   }
-        // }, [stepData])
+        useEffect(() => {
+          if (bidStep === BidStep.Complete && onBidComplete) {
+            const data: BidCallbackData = {
+              tokenId: tokenId,
+              collectionId: collectionId,
+              bidData,
+            }
+            onBidComplete(data)
+          }
+        }, [bidStep])
 
         // eslint-disable-next-line react-hooks/rules-of-hooks
-        // useEffect(() => {
-        //   if (bidStep === BidStep.Complete && onBidComplete) {
-        //     const data: BidCallbackData = {
-        //       tokenId: tokenId,
-        //       collectionId: collectionId,
-        //       bidData,
-        //     }
-        //     onBidComplete(data)
-        //   }
-        // }, [bidStep])
+        useEffect(() => {
+          if (transactionError && onBidError) {
+            const data: BidCallbackData = {
+              tokenId: tokenId,
+              collectionId: collectionId,
+              bidData,
+            }
+            onBidError(transactionError, data)
+          }
+        }, [transactionError])
 
+        // eslint-disable-next-line react-hooks/rules-of-hooks
+        useEffect(() => {
+          if (open && attributes && !tokenId && attribute) {
+            setTrait(attribute)
+          } else {
+            setTrait(undefined)
+          }
+
+          if (open && attributes && !tokenId) {
+            let attributeCount = 0
+            for (let i = 0; i < attributes.length; i++) {
+              attributeCount += attributes[i].attributeCount || 0
+              if (attributeCount >= 2000) {
+                break
+              }
+            }
+            if (attributeCount >= 2000) {
+              setAttributesSelectable(false)
+            } else {
+              setAttributesSelectable(true)
+            }
+          } else {
+            setAttributesSelectable(false)
+          }
+        }, [open, attributes])
 
         return (
+          // Component that renders the modal
           <CustomReservoirModal
             size={bidStep !== BidStep.Complete ? ModalSize.LG : ModalSize.MD}
             trigger={trigger}
@@ -515,12 +520,12 @@ export default function BidModalWrapper({ openState, tokenId, collectionId, onCl
                             </PseudoInput>
                           </Popover.Trigger>
                           <Popover.Content sideOffset={-50}>
-                            {/*<AttributeSelector*/}
-                            {/*  attributes={attributes}*/}
-                            {/*  tokenCount={tokenCount}*/}
-                            {/*  setTrait={setTrait}*/}
-                            {/*  setOpen={setAttributeSelectorOpen}*/}
-                            {/*/>*/}
+                            <AttributeSelector
+                              attributes={attributes}
+                              tokenCount={tokenCount}
+                              setTrait={setTrait}
+                              setOpen={setAttributeSelectorOpen}
+                            />
                           </Popover.Content>
                         </Popover.Root>
                       </>
@@ -610,7 +615,6 @@ export default function BidModalWrapper({ openState, tokenId, collectionId, onCl
                       Enter a Price
                     </Button>
                   )}
-                  {/*TODO - add hasEnoughWrappedCurreny date*/}
                   {bidAmount !== '' && hasEnoughWrappedCurrency && (
                     <Button
                       onClick={placeBid}
@@ -623,7 +627,6 @@ export default function BidModalWrapper({ openState, tokenId, collectionId, onCl
                           : 'Make a Collection Offer'}
                     </Button>
                   )}
-                  {/*TODO - add hasEnoughWrappedCurreny date*/}
                   {bidAmount !== '' && !hasEnoughWrappedCurrency && (
                     <Box css={{ width: '100%', mt: 'auto' }}>
                       {!hasEnoughNativeCurrency && (
@@ -705,26 +708,44 @@ export default function BidModalWrapper({ openState, tokenId, collectionId, onCl
                           <Flex
                             css={{ background: '$neutalLine', borderRadius: 8 }}
                           >
-                            {/*<CryptoCurrencyIcon*/}
-                            {/*  css={{ height: 56, width: 56 }}*/}
-                            {/*  address={wrappedContractAddress}*/}
-                            {/*/>*/}
+                            <CryptoCurrencyIcon
+                              css={{ height: 56, width: 56 }}
+                              address={wrappedContractAddress}
+                            />
                           </Flex>
                         </Flex>
                       )}
-                      <Text
-                        css={{
-                          textAlign: 'center',
-                          mt: 24,
-                          maxWidth: 395,
-                          mx: 'auto',
-                          mb: '$4'
-                        }}
-                        style='body3'
-                        color='subtle'
-                      >
-                        {stepData?.currentStep.description}
-                      </Text>
+                       {/*Change description to converting TXL instead of converting ETH to WETH*/}
+                      {stepData.currentStep.action === "Wrapping ETH" && (
+                        <Text
+                          css={{
+                            textAlign: 'center',
+                            mt: 24,
+                            maxWidth: 395,
+                            mx: 'auto',
+                            mb: '$4'
+                          }}
+                          style='body3'
+                          color='subtle'
+                        >
+                          We&apos;ll ask your approval for converting TXL to WTXL. Gas fee required.
+                        </Text>
+                      )}
+                      {stepData.currentStep.action !== "Wrapping ETH" && (
+                        <Text
+                          css={{
+                            textAlign: 'center',
+                            mt: 24,
+                            maxWidth: 395,
+                            mx: 'auto',
+                            mb: '$4'
+                          }}
+                          style='body3'
+                          color='subtle'
+                        >
+                          {stepData?.currentStep.description}
+                        </Text>
+                      )}
                     </>
                   )}
                   {!stepData && (

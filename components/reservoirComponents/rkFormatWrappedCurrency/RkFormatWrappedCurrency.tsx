@@ -23,7 +23,7 @@ const FormatWrappedCurrency: FC<Props> = ({ logoWidth, ...props }) => {
   const contractAddress =
     chain?.id !== undefined && chain.id in wrappedContracts
       ? wrappedContracts[chain.id]
-      : wrappedContracts[1]
+      : wrappedContracts[45000]
 
   return <RkFormatCryptoCurrency {...props} address={contractAddress} />
 }

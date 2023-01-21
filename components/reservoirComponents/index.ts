@@ -17,3 +17,4 @@ export { default as TransactionProgress } from './transactionProgress/Transactio
 export { default as Select } from './select/Select'
 export { default as Grid } from './grid/Grid'
 export { default as CustomDateInput } from './dateInput/DateInput'
+export { default as ScrollArea } from './scrollArea/ScrollArea'
