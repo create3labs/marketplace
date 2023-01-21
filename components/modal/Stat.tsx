@@ -14,12 +14,12 @@ type StatProps = {
 }
 
 const Stat: FC<StatProps> = ({
-                               label,
-                               value,
-                               asNative = false,
-                               asWrapped = false,
-                               ...props
-                             }) => (
+  label,
+  value,
+  asNative = false,
+  asWrapped = false,
+  ...props
+}) => (
   <Flex
     align="center"
     justify="between"
@@ -44,9 +44,7 @@ const Stat: FC<StatProps> = ({
       {label}
     </Flex>
     {asNative && !asWrapped && (
-      <RkFormatCryptoCurrency
-        amount={value}
-      />
+      <RkFormatCryptoCurrency amount={value} />
       // <FormatCryptoCurrency
       //   amount={value}
       //   textStyle="subtitle2"

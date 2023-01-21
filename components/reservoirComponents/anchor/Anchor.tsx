@@ -49,7 +49,7 @@ export const StyledAnchor = styled('a', {
 export default forwardRef<
   ElementRef<typeof StyledAnchor>,
   ComponentPropsWithoutRef<typeof StyledAnchor>
-  >(({ children, ...props }, forwardedRef) => (
+>(({ children, ...props }, forwardedRef) => (
   <StyledAnchor ref={forwardedRef} {...props} tabIndex={0}>
     {children}
   </StyledAnchor>

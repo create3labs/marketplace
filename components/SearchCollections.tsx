@@ -24,7 +24,8 @@ type Props = {
   setOpen?: Dispatch<SetStateAction<boolean>>
 }
 
-const DEFAULT_IMAGE = 'https://ik.imagekit.io/autobahn/showroom-default-image_cZvv3FPZ-.png';
+const DEFAULT_IMAGE =
+  'https://ik.imagekit.io/autobahn/showroom-default-image_cZvv3FPZ-.png'
 
 const PROXY_API_BASE = process.env.NEXT_PUBLIC_PROXY_API_BASE
 const COLLECTION_SET_ID = process.env.NEXT_PUBLIC_COLLECTION_SET_ID
@@ -96,7 +97,7 @@ const SearchCollections: FC<Props> = ({
 
   const isEmpty = results?.collections?.length === 0
 
-  console.log(initialResults);
+  console.log(initialResults)
 
   return (
     <Downshift
@@ -132,7 +133,7 @@ const SearchCollections: FC<Props> = ({
             className={
               isMobile
                 ? 'ml-[72px] h-[72px] w-full outline-none dark:bg-black'
-                : `reservoir-label-m sm:reservoir-label-l input-primary-outline w-full pl-9 dark:border-neutral-600 dark:bg-neutral-800 dark:text-white dark:ring-primary-900 dark:placeholder:text-neutral-400  dark:focus:ring-4 lg:w-[447px]`
+                : `reservoir-label-m input-primary-outline w-full pl-9 dark:border-neutral-600 dark:bg-neutral-800 dark:text-white dark:ring-primary-900 dark:placeholder:text-neutral-400 dark:focus:ring-4  sm:reservoir-label-l lg:w-[447px]`
             }
             placeholder="Search for a collection"
             {...getInputProps()}
@@ -192,9 +193,7 @@ const SearchCollections: FC<Props> = ({
                         }`}
                       >
                         <img
-                          src={
-                            collection?.image || DEFAULT_IMAGE
-                          }
+                          src={collection?.image || DEFAULT_IMAGE}
                           alt={`${collection?.name}'s logo.`}
                           className="h-9 w-9 shrink-0 overflow-hidden rounded-full"
                         />
@@ -250,9 +249,7 @@ const SearchCollections: FC<Props> = ({
                     }`}
                   >
                     <img
-                      src={
-                        collection?.image || DEFAULT_IMAGE
-                      }
+                      src={collection?.image || DEFAULT_IMAGE}
                       alt={`${collection?.name}'s logo.`}
                       className="h-9 w-9 shrink-0 overflow-hidden rounded-full"
                     />

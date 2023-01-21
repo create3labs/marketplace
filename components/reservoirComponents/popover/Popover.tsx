@@ -21,12 +21,12 @@ type Props = {
 } & Popover.PopoverProps
 
 const RKPopover = ({
-                     children,
-                     content,
-                     side = 'bottom',
-                     width = '100%',
-                     ...props
-                   }: Props) => {
+  children,
+  content,
+  side = 'bottom',
+  width = '100%',
+  ...props
+}: Props) => {
   return (
     <Popover.Root {...props}>
       <Popover.Trigger

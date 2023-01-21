@@ -8,11 +8,11 @@ type Props = {
 }
 
 const FormatCurrency: FC<ComponentPropsWithoutRef<typeof Text> & Props> = ({
-                                                                             amount,
-                                                                             maximumFractionDigits = 2,
-                                                                             currency = 'USD',
-                                                                             ...props
-                                                                           }) => {
+  amount,
+  maximumFractionDigits = 2,
+  currency = 'USD',
+  ...props
+}) => {
   const [formattedValue, setFormattedValue] = useState('')
 
   useEffect(() => {

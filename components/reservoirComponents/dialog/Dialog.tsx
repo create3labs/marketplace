@@ -23,7 +23,7 @@ const Overlay = styled(DialogPrimitive.Overlay, {
 const AnimatedOverlay = forwardRef<
   ElementRef<typeof DialogPrimitive.Overlay>,
   ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay>
-  >(({ ...props }, forwardedRef) => (
+>(({ ...props }, forwardedRef) => (
   <Overlay {...props} forceMount asChild>
     <motion.div
       ref={forwardedRef}
@@ -60,49 +60,49 @@ const Content = styled(DialogPrimitive.Content, {
 const AnimatedContent = forwardRef<
   ElementRef<typeof DialogPrimitive.DialogContent>,
   ComponentPropsWithoutRef<typeof DialogPrimitive.DialogContent>
-  >(({ children, ...props }, forwardedRef) => {
+>(({ children, ...props }, forwardedRef) => {
   const isMobile = useMediaQuery('(max-width: 520px)')
 
   const animation = isMobile
     ? {
-      initial: {
-        opacity: 0,
-        bottom: '-100%',
-        top: 'auto',
-        left: 0,
-      },
-      animate: {
-        opacity: 1,
-        bottom: 0,
-        top: 'auto',
-        left: 0,
-      },
+        initial: {
+          opacity: 0,
+          bottom: '-100%',
+          top: 'auto',
+          left: 0,
+        },
+        animate: {
+          opacity: 1,
+          bottom: 0,
+          top: 'auto',
+          left: 0,
+        },
 
-      exit: {
-        opacity: 0,
-        bottom: '-100%',
-        top: 'auto',
-        left: 0,
-      },
-    }
+        exit: {
+          opacity: 0,
+          bottom: '-100%',
+          top: 'auto',
+          left: 0,
+        },
+      }
     : {
-      initial: {
-        opacity: 0,
-        top: '14%',
-        transform: 'translateX(-50%)',
-      },
-      animate: {
-        opacity: 1,
-        top: '9%',
-        transform: 'translateX(-50%)',
-      },
+        initial: {
+          opacity: 0,
+          top: '14%',
+          transform: 'translateX(-50%)',
+        },
+        animate: {
+          opacity: 1,
+          top: '9%',
+          transform: 'translateX(-50%)',
+        },
 
-      exit: {
-        opacity: 0,
-        top: '14%',
-        transform: 'translateX(-50%)',
-      },
-    }
+        exit: {
+          opacity: 0,
+          top: '14%',
+          transform: 'translateX(-50%)',
+        },
+      }
 
   return (
     <Content forceMount asChild {...props}>
@@ -131,7 +131,7 @@ type Props = {
 const Dialog = forwardRef<
   ElementRef<typeof DialogPrimitive.Content>,
   ComponentPropsWithoutRef<typeof DialogPrimitive.Content> & Props
-  >(
+>(
   (
     { children, trigger, portalProps, onOpenChange, open, size, ...props },
     forwardedRef

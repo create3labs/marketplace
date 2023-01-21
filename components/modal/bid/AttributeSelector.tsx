@@ -12,7 +12,6 @@ import {
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { Trait, useAttributes } from '@reservoir0x/reservoir-kit-ui'
 
-
 type Props = {
   attributes?: NonNullable<ReturnType<typeof useAttributes>['data']>
   tokenCount?: number
@@ -21,11 +20,11 @@ type Props = {
 }
 
 const AttributeSelector: FC<Props> = ({
-                                        attributes,
-                                        setTrait,
-                                        setOpen,
-                                        tokenCount,
-                                      }) => {
+  attributes,
+  setTrait,
+  setOpen,
+  tokenCount,
+}) => {
   const [results, setResults] = useState<Props['attributes']>([])
   const [query, setQuery] = useState('')
 

@@ -29,7 +29,7 @@ const NavbarLogo: FC<Props> = ({ variant, className }) => {
   const desktopVariant = variant == 'desktop'
 
   return (
-    <div className="flex flex-col sm:flex-row justify-center items-center">
+    <div className="flex flex-col items-center justify-center sm:flex-row">
       <Link href={NAVBAR_LOGO_LINK || '/'}>
         <a
           className={`relative inline-flex flex-none items-center gap-1 ${className}`}
@@ -46,7 +46,9 @@ const NavbarLogo: FC<Props> = ({ variant, className }) => {
             alt={logoAlt}
             className={`h-9 w-auto md:block ${
               !variant ? 'hidden md:block' : ''
-            } ${mobileVariant ? 'hidden' : ''} ${desktopVariant ? 'block' : ''}`}
+            } ${mobileVariant ? 'hidden' : ''} ${
+              desktopVariant ? 'block' : ''
+            }`}
           />
           {chain?.testnet && (
             <div
@@ -63,7 +65,12 @@ const NavbarLogo: FC<Props> = ({ variant, className }) => {
           )}
         </a>
       </Link>
-      <div className="text-xs items-center inline-flex font-bold leading-sm uppercase px-3 py-1 bg-purple-200 text-purple-700 rounded-full" style={{ marginTop: '-56px', marginLeft: '-24px', marginRight: '20px' }}>Beta</div>
+      <div
+        className="leading-sm inline-flex items-center rounded-full bg-purple-200 px-3 py-1 text-xs font-bold uppercase text-purple-700"
+        style={{ marginTop: '-56px', marginLeft: '-24px', marginRight: '20px' }}
+      >
+        Beta
+      </div>
     </div>
   )
 }

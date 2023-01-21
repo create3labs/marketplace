@@ -78,13 +78,16 @@ const Index: NextPage<Props> = ({ collectionId, tokenDetails }) => {
   })
   const account = useAccount()
   const [tokenInfoButtons, setTokenInfoButtons] = useState<object[]>()
-  const [tokenInfoButtonsLoaded, setTokenInfoButtonsLoaded] = useState<boolean>(false)
+  const [tokenInfoButtonsLoaded, setTokenInfoButtonsLoaded] =
+    useState<boolean>(false)
 
   useEffect(() => {
     const effect = async () => {
       if (collectionId) {
         try {
-          const res = await fetch(`https://raw.githubusercontent.com/create3labs/nft-metadata/main/metadata/${CHAIN_ID}/${collectionId}/tokenInfoButtons.json`)
+          const res = await fetch(
+            `https://raw.githubusercontent.com/create3labs/nft-metadata/main/metadata/${CHAIN_ID}/${collectionId}/tokenInfoButtons.json`
+          )
           const buttonList = await res.json()
           if (buttonList) {
             setTokenInfoButtons(buttonList)
@@ -153,7 +156,7 @@ const Index: NextPage<Props> = ({ collectionId, tokenDetails }) => {
   }, [])
 
   if (!tokenInfoButtonsLoaded) {
-    return <div/>
+    return <div />
   }
 
   if (tokenData.error) {
@@ -195,7 +198,7 @@ const Index: NextPage<Props> = ({ collectionId, tokenDetails }) => {
         {description}
         {image}
       </Head>
-      <div className="mt-16 mb-16 col-span-full content-start space-y-4 px-2 pt-4 md:col-span-4 lg:col-span-5 lg:col-start-2 lg:px-0 2xl:col-span-4 2xl:col-start-3 3xl:col-start-5 4xl:col-start-7">
+      <div className="col-span-full mt-16 mb-16 content-start space-y-4 px-2 pt-4 md:col-span-4 lg:col-span-5 lg:col-start-2 lg:px-0 2xl:col-span-4 2xl:col-start-3 3xl:col-start-5 4xl:col-start-7">
         <div className="mb-4">
           <TokenMedia token={token.token} />
         </div>
@@ -204,7 +207,7 @@ const Index: NextPage<Props> = ({ collectionId, tokenDetails }) => {
           <TokenInfo token={token.token} tokenInfoButtons={tokenInfoButtons} />
         </div>
       </div>
-      <div className="mt-16 col-span-full mb-4 space-y-4 px-2 pt-0 md:col-span-4 md:col-start-5 md:pt-4 lg:col-span-5 lg:col-start-7 lg:px-0 2xl:col-span-5 2xl:col-start-7 3xl:col-start-9 4xl:col-start-11">
+      <div className="col-span-full mt-16 mb-4 space-y-4 px-2 pt-0 md:col-span-4 md:col-start-5 md:pt-4 lg:col-span-5 lg:col-start-7 lg:px-0 2xl:col-span-5 2xl:col-start-7 3xl:col-start-9 4xl:col-start-11">
         <Owner
           details={token}
           bannedOnOpenSea={bannedOnOpenSea}

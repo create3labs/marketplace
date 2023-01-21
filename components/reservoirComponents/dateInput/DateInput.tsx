@@ -1,5 +1,5 @@
 import { default as FlatpickrModule } from 'react-flatpickr'
-import Flatpickr from "react-flatpickr";
+import Flatpickr from 'react-flatpickr'
 import { Input } from '../'
 import React, {
   ComponentPropsWithoutRef,
@@ -7,7 +7,6 @@ import React, {
   ElementRef,
   forwardRef,
 } from 'react'
-
 
 // @ts-ignore
 // const Flatpickr = FlatpickrModule.default

@@ -14,14 +14,14 @@ type Props = {
 }
 
 const FormatCrypto: FC<Props> = ({
-                                   amount,
-                                   maximumFractionDigits = 4,
-                                   decimals = 18,
-                                   css,
-                                   textStyle = 'subtitle2',
-                                   textColor = 'base',
-                                   children,
-                                 }) => {
+  amount,
+  maximumFractionDigits = 4,
+  decimals = 18,
+  css,
+  textStyle = 'subtitle2',
+  textColor = 'base',
+  children,
+}) => {
   const value = formatBN(amount, maximumFractionDigits, decimals)
   return (
     <Flex align="center" css={{ gap: '$1' }}>

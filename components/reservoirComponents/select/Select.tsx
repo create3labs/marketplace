@@ -61,11 +61,10 @@ const StyledItemText = styled(Select.ItemText, textCss)
 
 const StyledValue = styled(Select.Value, textCss)
 
-
 const SelectDownIcon = forwardRef<
   ElementRef<typeof Select.Icon>,
   ComponentPropsWithoutRef<typeof Select.Icon>
-  >(({ ...props }, forwardedRef) => (
+>(({ ...props }, forwardedRef) => (
   <Select.Icon asChild ref={forwardedRef} {...props}>
     <Box css={{ color: '$neutralSolidHover' }}>
       <FontAwesomeIcon icon={faChevronDown} width="14" color="" />
@@ -75,9 +74,9 @@ const SelectDownIcon = forwardRef<
 
 export const RKSelect: React.FC<
   Props &
-  ComponentPropsWithoutRef<typeof Select.Root> &
-  ComponentPropsWithoutRef<typeof Select.Value>
-  > &
+    ComponentPropsWithoutRef<typeof Select.Root> &
+    ComponentPropsWithoutRef<typeof Select.Value>
+> &
   SelectProps = ({ children, trigger, css, ...props }) => (
   <Select.Root {...props}>
     {trigger ? (

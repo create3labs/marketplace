@@ -367,9 +367,7 @@ const PriceData: FC<Props> = ({ details, collection, isOwner }) => {
                     </button>
                   }
                 />
-
               )}
-
 
               <CancelOffer
                 data={{

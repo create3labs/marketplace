@@ -34,7 +34,7 @@ type Props = {
   | 'open'
   | 'trigger'
   | 'onFocusCapture'
-  >
+>
 
 // const Logo = styled(ReservoirLogoWhiteText, {
 //   '& .letter': {
@@ -46,9 +46,11 @@ type Props = {
 // https://docs.reservoir.tools/docs/buying#custom-buymodal
 // CustomReservoirModal is https://github.com/reservoirprotocol/reservoir-kit/blob/main/packages/ui/src/modal/Modal.tsx
 
-
 // eslint-disable-next-line react/display-name
-export const CustomReservoirModal = forwardRef<ElementRef<typeof Dialog>, Props>(
+export const CustomReservoirModal = forwardRef<
+  ElementRef<typeof Dialog>,
+  Props
+>(
   (
     {
       title,

@@ -1,6 +1,5 @@
 import { ExpirationOption } from '../types/ExpirationOptions'
 
-
 const expirationOptions: ExpirationOption[] = [
   {
     text: '1 Hour',

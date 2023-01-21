@@ -1,6 +1,5 @@
 import { getClient } from '@reservoir0x/reservoir-kit-client'
 
-
 export default () => {
   const client = getClient()
   let reservoirTitleEl = document.querySelector(

@@ -2,7 +2,6 @@ import { createStitches } from '@stitches/react'
 import type * as Stitches from '@stitches/react'
 import { ReservoirKitTheme } from '@reservoir0x/reservoir-kit-ui'
 
-
 export type CSS = Stitches.CSS<typeof config>
 export type CSSProps = { css?: CSS }
 

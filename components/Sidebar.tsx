@@ -1,4 +1,4 @@
-import cn from 'classnames';
+import cn from 'classnames'
 import * as Accordion from '@radix-ui/react-accordion'
 import { FC, MutableRefObject } from 'react'
 import AttributeSelector from './filter/AttributeSelector'

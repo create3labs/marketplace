@@ -1,6 +1,6 @@
 import { Box, Flex } from '../'
 import React, { FC, ComponentPropsWithoutRef } from 'react'
-import { styled, keyframes} from '../../../stitches.config'
+import { styled, keyframes } from '../../../stitches.config'
 
 type Props = {
   fromImg: string

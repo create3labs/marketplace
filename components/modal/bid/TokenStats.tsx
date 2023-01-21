@@ -51,11 +51,12 @@ const TokenStats: FC<Props> = ({ token, collection, trait }) => {
           Highest Offer
         </Text>
       ),
-      value: token && token.market?.topBid?.price?.amount?.native
-         ? token.market?.topBid?.price?.amount?.native
-        : collection?.topBid?.price?.amount?.native
-      ? collection?.topBid?.price?.amount?.native
-      : null,
+      value:
+        token && token.market?.topBid?.price?.amount?.native
+          ? token.market?.topBid?.price?.amount?.native
+          : collection?.topBid?.price?.amount?.native
+          ? collection?.topBid?.price?.amount?.native
+          : null,
       asWrapped: false,
     }
   )

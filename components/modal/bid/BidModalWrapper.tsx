@@ -4,12 +4,29 @@ import React, {
   useRef,
   Dispatch,
   SetStateAction,
-  ReactNode, useEffect
+  ReactNode,
+  useEffect,
 } from 'react'
 import { BidModal, Trait, useAttributes } from '@reservoir0x/reservoir-kit-ui'
 import { styled } from '../../../stitches.config'
-import { Text, Flex, Input, Box, Button, RkFormatCryptoCurrency,
-  Loader, Popover, PseudoInput, ErrorWell, ProgressBar, TransactionProgress, Select, RkFormatCurrency, CustomDateInput, RkFormatWrappedCurrency } from '../../reservoirComponents'
+import {
+  Text,
+  Flex,
+  Input,
+  Box,
+  Button,
+  RkFormatCryptoCurrency,
+  Loader,
+  Popover,
+  PseudoInput,
+  ErrorWell,
+  ProgressBar,
+  TransactionProgress,
+  Select,
+  RkFormatCurrency,
+  CustomDateInput,
+  RkFormatWrappedCurrency,
+} from '../../reservoirComponents'
 import TokenStats from './TokenStats'
 import AttributeSelector from './AttributeSelector'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -48,7 +65,7 @@ export type Traits =
 
 export type BidData = Parameters<
   ReservoirClientActions['placeBid']
-  >['0']['bids'][0]
+>['0']['bids'][0]
 
 type BidCallbackData = {
   tokenId?: string
@@ -135,9 +152,18 @@ type MyProps = {
 // BidModal.Custom - (Also Called Renderer - Data Layer Component) | is https://github.com/reservoirprotocol/reservoir-kit/blob/main/packages/ui/src/modal/bid/BidModalRenderer.tsx
 // CustomReservoirModal - Actual Modal that renders front-end components | is https://github.com/reservoirprotocol/reservoir-kit/blob/main/packages/ui/src/modal/Modal.tsx
 
-export default function BidModalWrapper({ openState, tokenId, collectionId, attribute, onClose, trigger, onViewOffers, onBidComplete,
-                                          onBidError, normalizeRoyalties}: MyProps):ReactElement {
-
+export default function BidModalWrapper({
+  openState,
+  tokenId,
+  collectionId,
+  attribute,
+  onClose,
+  trigger,
+  onViewOffers,
+  onBidComplete,
+  onBidError,
+  normalizeRoyalties,
+}: MyProps): ReactElement {
   const [open, setOpen] = useFallbackState(
     openState ? openState[0] : false,
     openState
@@ -158,7 +184,7 @@ export default function BidModalWrapper({ openState, tokenId, collectionId, attr
 
   const [localMarketplace, setLocalMarketplace] = useState<ReturnType<
     typeof getLocalMarketplaceData
-    > | null>(null)
+  > | null>(null)
 
   // const [expirationOption, setExpirationOption] = useState<ExpirationOption>(
   //   expirationOptions[3]
@@ -170,10 +196,7 @@ export default function BidModalWrapper({ openState, tokenId, collectionId, attr
 
   const wrappedContractAddress = wrappedContracts[45000]
 
-  const usdPrice = useCoinConversion(
-    'USD',
-    'TXL'
-  )
+  const usdPrice = useCoinConversion('USD', 'TXL')
 
   const minimumDate = dayjs().add(1, 'h').format('MM/DD/YYYY h:mm A')
 
@@ -186,26 +209,27 @@ export default function BidModalWrapper({ openState, tokenId, collectionId, attr
       attribute={attribute}
       normalizeRoyalties={normalizeRoyalties}
     >
-      {({ token,
-          collection,
-          attributes,
-          isBanned,
-          balance,
-          bidAmount,
-          bidData,
-          bidStep,
-          hasEnoughNativeCurrency,
-          transactionError,
-          expirationOption,
-          expirationOptions,
-          stepData,
-          setBidStep,
-          setBidAmount,
-          setExpirationOption,
-          setTrait,
-          trait,
-          placeBid}) => {
-
+      {({
+        token,
+        collection,
+        attributes,
+        isBanned,
+        balance,
+        bidAmount,
+        bidData,
+        bidStep,
+        hasEnoughNativeCurrency,
+        transactionError,
+        expirationOption,
+        expirationOptions,
+        stepData,
+        setBidStep,
+        setBidAmount,
+        setExpirationOption,
+        setTrait,
+        trait,
+        placeBid,
+      }) => {
         const autobahnConvertLink = 'https://start.autobahn.network'
 
         const txlBidAmountUsd = +bidAmount * (usdPrice || 0)
@@ -239,7 +263,6 @@ export default function BidModalWrapper({ openState, tokenId, collectionId, attr
               const amountToWrap = bid.sub(wrappedAmount)
               // @ts-ignore
               setAmountToWrap(formatBN(bid.sub(wrappedAmount), 5))
-
             } else {
               setHasEnoughWrappedCurrency(true)
               setAmountToWrap('')
@@ -269,8 +292,7 @@ export default function BidModalWrapper({ openState, tokenId, collectionId, attr
               case 'Wrapping ETH': {
                 setStepTitle('Wrapping TXL')
                 break
-            }
-
+              }
             }
           }
         }, [stepData])
@@ -280,13 +302,12 @@ export default function BidModalWrapper({ openState, tokenId, collectionId, attr
           if (expirationOption && expirationOption.relativeTime) {
             const newExpirationTime = expirationOption.relativeTimeUnit
               ? dayjs().add(
-                expirationOption.relativeTime,
-                expirationOption.relativeTimeUnit
-              )
+                  expirationOption.relativeTime,
+                  expirationOption.relativeTimeUnit
+                )
               : dayjs.unix(expirationOption.relativeTime)
             setExpirationDate(newExpirationTime.format('MM/DD/YYYY h:mm A'))
           } else {
-
             setExpirationDate('')
           }
         }, [expirationOption])
@@ -366,17 +387,17 @@ export default function BidModalWrapper({ openState, tokenId, collectionId, attr
                 <MainContainer css={{ p: '$4' }}>
                   {isBanned && (
                     <ErrorWell
-                      message='Token is not tradable on OpenSea'
+                      message="Token is not tradable on OpenSea"
                       css={{ mb: '$2', p: '$2', borderRadius: 4 }}
                     />
                   )}
-                  <Flex justify='between'>
-                    <Text style='tiny'>Offer Amount</Text>
+                  <Flex justify="between">
+                    <Text style="tiny">Offer Amount</Text>
                     <Text
                       as={Flex}
                       css={{ gap: '$1' }}
-                      align='center'
-                      style='tiny'
+                      align="center"
+                      style="tiny"
                     >
                       Balance:{' '}
                       {/*<FormatNativeCrypto amount={balance?.value} />*/}
@@ -391,29 +412,29 @@ export default function BidModalWrapper({ openState, tokenId, collectionId, attr
                     <Text
                       as={Flex}
                       css={{ gap: '$2', ml: '$3', flexShrink: 0 }}
-                      align='center'
-                      style='body1'
-                      color='subtle'
+                      align="center"
+                      style="body1"
+                      color="subtle"
                     >
                       <CryptoCurrencyIcon
                         css={{ height: 20 }}
-                        address='0x6405B66E6F27c32ADeFA43C24FD1e3d09769b560'
+                        address="0x6405B66E6F27c32ADeFA43C24FD1e3d09769b560"
                       />
                       WTXL
                     </Text>
                     <Input
-                      type='number'
+                      type="number"
                       value={bidAmount}
                       onChange={(e) => {
                         setBidAmount(e.target.value)
                       }}
-                      placeholder='Enter price here'
+                      placeholder="Enter price here"
                       containerCss={{
-                        width: '100%'
+                        width: '100%',
                       }}
                       css={{
                         color: '$neutralText',
-                        textAlign: 'left'
+                        textAlign: 'left',
                       }}
                     />
                   </Flex>
@@ -432,7 +453,7 @@ export default function BidModalWrapper({ openState, tokenId, collectionId, attr
                     (attributesSelectable || trait) &&
                     !tokenId && (
                       <>
-                        <Text as={Box} css={{ mb: '$2' }} style='tiny'>
+                        <Text as={Box} css={{ mb: '$2' }} style="tiny">
                           Attributes
                         </Text>
                         <Popover.Root
@@ -446,11 +467,11 @@ export default function BidModalWrapper({ openState, tokenId, collectionId, attr
                           <Popover.Trigger asChild>
                             <PseudoInput>
                               <Flex
-                                justify='between'
+                                justify="between"
                                 css={{
                                   gap: '$2',
                                   alignItems: 'center',
-                                  color: '$neutralText'
+                                  color: '$neutralText',
                                 }}
                               >
                                 {trait ? (
@@ -460,20 +481,20 @@ export default function BidModalWrapper({ openState, tokenId, collectionId, attr
                                         maxWidth: 385,
                                         overflow: 'hidden',
                                         textOverflow: 'ellipsis',
-                                        whiteSpace: 'nowrap'
+                                        whiteSpace: 'nowrap',
                                       }}
                                     >
-                                      <Text color='accent' style='subtitle1'>
+                                      <Text color="accent" style="subtitle1">
                                         {trait?.key}:{' '}
                                       </Text>
-                                      <Text style='subtitle1'>
+                                      <Text style="subtitle1">
                                         {trait?.value}
                                       </Text>
                                     </Box>
                                     <Flex
                                       css={{
                                         alignItems: 'center',
-                                        gap: '$2'
+                                        gap: '$2',
                                       }}
                                     >
                                       <Box css={{ flex: 'none' }}>
@@ -488,7 +509,7 @@ export default function BidModalWrapper({ openState, tokenId, collectionId, attr
                                       </Box>
                                       <FontAwesomeIcon
                                         style={{
-                                          cursor: 'pointer'
+                                          cursor: 'pointer',
                                         }}
                                         onClick={(e) => {
                                           e.preventDefault()
@@ -504,7 +525,7 @@ export default function BidModalWrapper({ openState, tokenId, collectionId, attr
                                   <>
                                     <Text
                                       css={{
-                                        color: '$neutralText'
+                                        color: '$neutralText',
                                       }}
                                     >
                                       All Attributes
@@ -531,7 +552,7 @@ export default function BidModalWrapper({ openState, tokenId, collectionId, attr
                       </>
                     )}
 
-                  <Text as={Box} css={{ mt: '$4', mb: '$2' }} style='tiny'>
+                  <Text as={Box} css={{ mt: '$4', mb: '$2' }} style="tiny">
                     Expiration Date
                   </Text>
                   <Flex css={{ gap: '$2', mb: '$4' }}>
@@ -540,8 +561,8 @@ export default function BidModalWrapper({ openState, tokenId, collectionId, attr
                         flex: 1,
                         '@bp1': {
                           width: 160,
-                          flexDirection: 'row'
-                        }
+                          flexDirection: 'row',
+                        },
                       }}
                       value={expirationOption?.text || ''}
                       onValueChange={(value: string) => {
@@ -563,7 +584,6 @@ export default function BidModalWrapper({ openState, tokenId, collectionId, attr
                             </Select.Item>
                           )
                         }
-
                       })}
                     </Select>
                     <CustomDateInput
@@ -623,15 +643,15 @@ export default function BidModalWrapper({ openState, tokenId, collectionId, attr
                       {token && token.token
                         ? 'Make an Offer'
                         : trait
-                          ? 'Make an Attribute Offer'
-                          : 'Make a Collection Offer'}
+                        ? 'Make an Attribute Offer'
+                        : 'Make a Collection Offer'}
                     </Button>
                   )}
                   {bidAmount !== '' && !hasEnoughWrappedCurrency && (
                     <Box css={{ width: '100%', mt: 'auto' }}>
                       {!hasEnoughNativeCurrency && (
-                        <Flex css={{ gap: '$2', mt: 10 }} justify='center'>
-                          <Text style='body2' color='error'>
+                        <Flex css={{ gap: '$2', mt: 10 }} justify="center">
+                          <Text style="body2" color="error">
                             {balance?.symbol || 'ETH'} Balance
                           </Text>
                           <RkFormatCryptoCurrency amount={balance?.value} />
@@ -644,13 +664,13 @@ export default function BidModalWrapper({ openState, tokenId, collectionId, attr
                           overflow: 'hidden',
                           flexDirection: 'column-reverse',
                           '@bp1': {
-                            flexDirection: 'row'
-                          }
+                            flexDirection: 'row',
+                          },
                         }}
                       >
                         <Button
                           css={{ flex: '1 0 auto' }}
-                          color='secondary'
+                          color="secondary"
                           onClick={() => {
                             window.open(autobahnConvertLink, '_blank')
                           }}
@@ -662,7 +682,7 @@ export default function BidModalWrapper({ openState, tokenId, collectionId, attr
                           disabled={!hasEnoughNativeCurrency}
                           onClick={placeBid}
                         >
-                          <Text style='h6' color='button' ellipsify>
+                          <Text style="h6" color="button" ellipsify>
                             Convert {amountToWrap} {balance?.symbol || 'TXL'}{' '}
                             for me
                           </Text>
@@ -691,20 +711,20 @@ export default function BidModalWrapper({ openState, tokenId, collectionId, attr
                     <>
                       <Text
                         css={{ textAlign: 'center', mt: 48, mb: 28 }}
-                        style='subtitle1'
+                        style="subtitle1"
                       >
                         {stepTitle}
                       </Text>
                       {stepData.currentStep.kind === 'signature' && (
                         <TransactionProgress
-                          justify='center'
+                          justify="center"
                           fromImg={itemImage || ''}
                           toImg={localMarketplace?.icon || ''}
                         />
                       )}
                       {stepData.currentStep.kind !== 'signature' && (
                         // <WethApproval style={{ margin: '0 auto' }} />
-                        <Flex align='center' justify='center'>
+                        <Flex align="center" justify="center">
                           <Flex
                             css={{ background: '$neutalLine', borderRadius: 8 }}
                           >
@@ -715,33 +735,34 @@ export default function BidModalWrapper({ openState, tokenId, collectionId, attr
                           </Flex>
                         </Flex>
                       )}
-                       {/*Change description to converting TXL instead of converting ETH to WETH*/}
-                      {stepData.currentStep.action === "Wrapping ETH" && (
+                      {/*Change description to converting TXL instead of converting ETH to WETH*/}
+                      {stepData.currentStep.action === 'Wrapping ETH' && (
                         <Text
                           css={{
                             textAlign: 'center',
                             mt: 24,
                             maxWidth: 395,
                             mx: 'auto',
-                            mb: '$4'
+                            mb: '$4',
                           }}
-                          style='body3'
-                          color='subtle'
+                          style="body3"
+                          color="subtle"
                         >
-                          We&apos;ll ask your approval for converting TXL to WTXL. Gas fee required.
+                          We&apos;ll ask your approval for converting TXL to
+                          WTXL. Gas fee required.
                         </Text>
                       )}
-                      {stepData.currentStep.action !== "Wrapping ETH" && (
+                      {stepData.currentStep.action !== 'Wrapping ETH' && (
                         <Text
                           css={{
                             textAlign: 'center',
                             mt: 24,
                             maxWidth: 395,
                             mx: 'auto',
-                            mb: '$4'
+                            mb: '$4',
                           }}
-                          style='body3'
-                          color='subtle'
+                          style="body3"
+                          color="subtle"
                         >
                           {stepData?.currentStep.description}
                         </Text>
@@ -751,8 +772,8 @@ export default function BidModalWrapper({ openState, tokenId, collectionId, attr
                   {!stepData && (
                     <Flex
                       css={{ height: '100%' }}
-                      justify='center'
-                      align='center'
+                      justify="center"
+                      align="center"
                     >
                       <Loader />
                     </Flex>
@@ -766,7 +787,7 @@ export default function BidModalWrapper({ openState, tokenId, collectionId, attr
                   {transactionError && (
                     <Flex css={{ mt: 'auto', gap: 10 }}>
                       <Button
-                        color='secondary'
+                        color="secondary"
                         css={{ flex: 1 }}
                         onClick={() => setBidStep(BidStep.SetPrice)}
                       >
@@ -782,14 +803,14 @@ export default function BidModalWrapper({ openState, tokenId, collectionId, attr
             )}
 
             {bidStep === BidStep.Complete && (
-              <Flex direction='column' align='center' css={{ p: '$4' }}>
+              <Flex direction="column" align="center" css={{ p: '$4' }}>
                 <Box css={{ color: '$successAccent', mt: 48 }}>
                   <FontAwesomeIcon
                     icon={faCheckCircle}
                     style={{ width: '32px', height: '32px' }}
                   />
                 </Box>
-                <Text style='h5' css={{ textAlign: 'center', mt: 36, mb: 80 }}>
+                <Text style="h5" css={{ textAlign: 'center', mt: 36, mb: 80 }}>
                   Offer Submitted!
                 </Text>
                 {onViewOffers ? (
@@ -825,4 +846,3 @@ export default function BidModalWrapper({ openState, tokenId, collectionId, attr
     </BidModal.Custom>
   )
 }
-

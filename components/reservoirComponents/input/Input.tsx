@@ -35,11 +35,11 @@ const StyledInput = styled('input', {
 export const Input = forwardRef<
   ElementRef<typeof StyledInput>,
   ComponentPropsWithoutRef<typeof StyledInput> & {
-  icon?: ReactNode
-  containerCss?: CSS
-  iconCss?: CSS
-}
-  >(({ children, icon, containerCss, iconCss, ...props }, forwardedRef) => (
+    icon?: ReactNode
+    containerCss?: CSS
+    iconCss?: CSS
+  }
+>(({ children, icon, containerCss, iconCss, ...props }, forwardedRef) => (
   <Flex css={{ ...containerCss, position: 'relative' }}>
     {icon && (
       <Box

@@ -79,7 +79,13 @@ const TokenInfo: FC<Props> = ({ token, tokenInfoButtons }) => {
       </div>
       <div className="mb-4 flex items-center">
         <div className="flex flex-wrap items-center gap-2">
-          {tokenInfoButtons?.map((button: any, index: number) => (<TokenInteractionButton key={`TokenInteractionButton${index}`} button={button} tokenId={token?.tokenId!} />))}
+          {tokenInfoButtons?.map((button: any, index: number) => (
+            <TokenInteractionButton
+              key={`TokenInteractionButton${index}`}
+              button={button}
+              tokenId={token?.tokenId!}
+            />
+          ))}
         </div>
       </div>
       {token?.contract && (

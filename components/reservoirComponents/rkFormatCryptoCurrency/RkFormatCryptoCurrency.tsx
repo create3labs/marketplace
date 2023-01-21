@@ -11,15 +11,15 @@ type FormatCryptoCurrencyProps = {
 type Props = ComponentProps<typeof FormatCrypto> & FormatCryptoCurrencyProps
 
 const RkFormatCryptoCurrency: FC<Props> = ({
-                                           amount,
-                                           address = constants.AddressZero,
-                                           maximumFractionDigits,
-                                           logoWidth = 14,
-                                           textStyle,
-                                           css,
-                                           textColor,
-                                           decimals,
-                                         }) => {
+  amount,
+  address = constants.AddressZero,
+  maximumFractionDigits,
+  logoWidth = 14,
+  textStyle,
+  css,
+  textColor,
+  decimals,
+}) => {
   return (
     <FormatCrypto
       css={css}

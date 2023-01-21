@@ -163,7 +163,6 @@
     url('/fonts/montserrat/Montserrat-BlackItalic.woff') format('woff');
 }
 
-
 /** =================== MONTSERRAT UPPERCASE ITALIC =================== **/
 
 /** Montserrat Black-Italic **/
@@ -171,5 +170,6 @@
   font-family: 'Montserrat Uppercase Bold Italic';
   font-weight: 900;
   font-style: italic;
-  src: url('/fonts/montserrat_uppercase_italic/Montserrat-BlackItalic.woff2') format('woff2');
+  src: url('/fonts/montserrat_uppercase_italic/Montserrat-BlackItalic.woff2')
+    format('woff2');
 }
