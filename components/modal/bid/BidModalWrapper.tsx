@@ -230,6 +230,13 @@ export default function BidModalWrapper({
         trait,
         placeBid,
       }) => {
+        // @dev - TODO: old convert link. We need to update this to use the new convert link from autobahn
+        // const uniswapConvertLink =
+        //   chain?.id === mainnet.id || chain?.id === goerli.id
+        //     ? `https://app.uniswap.org/#/swap?theme=dark&exactAmount=${amountToWrap}&chain=${
+        //       chain?.network || 'mainnet'
+        //     }&inputCurrency=eth&outputCurrency=${contractAddress}`
+        //     : `https://app.uniswap.org/#/swap?theme=dark&exactAmount=${amountToWrap}`
         const autobahnConvertLink = 'https://start.autobahn.network'
 
         const txlBidAmountUsd = +bidAmount * (usdPrice || 0)
