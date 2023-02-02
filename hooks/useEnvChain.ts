@@ -21,7 +21,24 @@ const allChainsIncludingAutobahn: Chain[] = allChains
       blockExplorers: {
         default: { name: 'Autobahn Explorer', url: 'https://autobahn-explorer.com' },
       },
-    }
+    },
+    {
+      id: 1661,
+      name: 'Horizen EVM',
+      network: 'horizen',
+      nativeCurrency: {
+        decimals: 18,
+        name: 'ZEN',
+        symbol: 'ZEN',
+      },
+      rpcUrls: {
+        default: 'https://horizen-api.showroom.art',
+      },
+      testnet: false,
+      blockExplorers: {
+        default: { name: 'Horizen EVM Explorer', url: 'https://blockscout.horizenlabstools.net' },
+      },
+    },
   ]);
 
 export function findChain(id?: string) {

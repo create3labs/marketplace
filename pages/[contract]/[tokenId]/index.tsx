@@ -135,7 +135,7 @@ const Index: NextPage<Props> = ({ collectionId, tokenDetails }) => {
     if (CHAIN_ID && (+CHAIN_ID === 1 || +CHAIN_ID === 5)) {
       const baseUrl =
         +CHAIN_ID === 1
-          ? 'https://api.opensea.io'
+          ? 'https://api.opensea.io/'
           : 'https://testnets-api.opensea.io'
       fetch(
         `${baseUrl}/api/v1/asset/${collectionId}/${router.query?.tokenId?.toString()}/offers`
