@@ -33,7 +33,7 @@ export function findChain(id?: string) {
   return undefined
 }
 
-export default function useEnvChain() {
+export default function useEvmChain() {
   const [chain, setChain] = useState<Chain | undefined>()
 
   useEffect(() => {

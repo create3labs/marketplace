@@ -67,7 +67,7 @@ const API_BASE = process.env.NEXT_PUBLIC_RESERVOIR_API_BASE
 const SOURCE_NAME = process.env.NEXT_PUBLIC_SOURCE_NAME
 const CHAIN_ID = process.env.NEXT_PUBLIC_CHAIN_ID
 
-const envChain = allChains.find(
+const evmChain = allChains.find(
   (chain) => chain.id === +(CHAIN_ID || chainId.mainnet)
 )
 

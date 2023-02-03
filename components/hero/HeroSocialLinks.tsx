@@ -4,7 +4,7 @@ import { FiGlobe, FiMoreVertical, FiRefreshCcw } from 'react-icons/fi'
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 import { Collection } from 'types/reservoir'
 import { useNetwork } from 'wagmi'
-import useEnvChain from 'hooks/useEnvChain'
+import useEvmChain from 'hooks/useEvmChain'
 
 type Props = {
   refreshCollection: (collectionId: string | undefined) => Promise<void>
@@ -14,14 +14,14 @@ type Props = {
 const DARK_MODE = process.env.NEXT_PUBLIC_DARK_MODE
 
 const HeroSocialLinks: FC<Props> = ({ refreshCollection, collection }) => {
-  const envChain = useEnvChain()
+  const evmChain = useEvmChain()
   const isSmallDevice = useMediaQuery('only screen and (max-width : 768px)')
   const social = {
     twitterUsername: collection?.twitterUsername,
     externalUrl: collection?.externalUrl,
     discordUrl: collection?.discordUrl,
     blockExplorerUrl: `${
-      envChain?.blockExplorers?.default.url || 'https://etherscan.io'
+      evmChain?.blockExplorers?.default.url || 'https://etherscan.io'
     }/address/${collection?.id}`,
   }
 
@@ -93,7 +93,7 @@ const HeroSocialLinks: FC<Props> = ({ refreshCollection, collection }) => {
                   alt="Etherscan Icon"
                   className="h-6 w-6"
                 />
-                {envChain?.blockExplorers?.default.name || 'Etherscan'}
+                {evmChain?.blockExplorers?.default.name || 'Etherscan'}
               </a>
             </DropdownMenu.Item>
             {typeof social.externalUrl === 'string' && (

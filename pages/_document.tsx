@@ -1,4 +1,4 @@
-import { findChain } from 'hooks/useEnvChain'
+import { findChain } from 'hooks/useEvmChain'
 import Document, {
   Html,
   Head,

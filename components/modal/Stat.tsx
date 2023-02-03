@@ -5,6 +5,7 @@ import {
   RkFormatCryptoCurrency,
   // FormatWrappedCurrency,
 } from '../reservoirComponents'
+import RkFormatWrappedCurrency from '../reservoirComponents/rkFormatWrappedCurrency/RkFormatWrappedCurrency'
 
 type StatProps = {
   label: string | ReactElement
@@ -44,15 +45,15 @@ const Stat: FC<StatProps> = ({
       {label}
     </Flex>
     {asNative && !asWrapped && (
-      <RkFormatCryptoCurrency amount={value} />
+      <RkFormatCryptoCurrency amount={value} textStyle="subtitle2" />
       // <FormatCryptoCurrency
       //   amount={value}
       //   textStyle="subtitle2"
       // />
     )}
-    {/*{asWrapped && !asNative && (*/}
-    {/*  <FormatWrappedCurrency amount={value} textStyle="subtitle2" />*/}
-    {/*)}*/}
+    {asWrapped && !asNative && (
+      <RkFormatWrappedCurrency amount={value} textStyle="subtitle2" />
+    )}
     {!asNative && !asWrapped && (
       <Text
         style="subtitle2"

@@ -7,7 +7,7 @@ import Image from 'next/image'
 import { useMediaQuery } from '@react-hookz/web'
 import LoadingIcon from 'components/LoadingIcon'
 import { FiExternalLink, FiRepeat, FiTrash2, FiXSquare } from 'react-icons/fi'
-import useEnvChain from 'hooks/useEnvChain'
+import useEvmChain from 'hooks/useEvmChain'
 import { useAccount } from 'wagmi'
 import { constants } from 'ethers'
 import { FaSeedling } from 'react-icons/fa'
@@ -204,9 +204,9 @@ const ActivityTableRow: FC<ActivityTableRowProps> = ({ activity }) => {
       `${RESERVOIR_API_BASE}/redirect/collections/${activity?.collection?.collectionImage}/image/v1`
   )
   const [timeAgo, setTimeAgo] = useState(activity?.timestamp || '')
-  const envChain = useEnvChain()
+  const evmChain = useEvmChain()
   const blockExplorerBaseUrl =
-    envChain?.blockExplorers?.default?.url || 'https://etherscan.io'
+    evmChain?.blockExplorers?.default?.url || 'https://etherscan.io'
   const href = activity?.token?.tokenId
     ? `/${activity?.collection?.collectionId}/${activity?.token?.tokenId}`
     : `/collections/${activity?.collection?.collectionId}`

@@ -8,6 +8,7 @@ import { formatEther } from 'ethers/lib/utils.js'
 import SelectedAttribute from './SelectedAttribute'
 import { useTokens, useCollections } from '@reservoir0x/reservoir-kit-ui'
 import useTimeSince from '../../../hooks/useTimeSince'
+import RkFormatWrappedCurrency from '../../reservoirComponents/rkFormatWrappedCurrency/RkFormatWrappedCurrency'
 
 type Props = {
   token?: NonNullable<NonNullable<ReturnType<typeof useTokens>>['data']>['0']
@@ -61,7 +62,7 @@ const TransactionBidDetails: FC<Props> = ({ token, collection, bidData }) => {
         >
           <Flex justify="between">
             <Text style="subtitle2">Offer Price</Text>
-            {/*<FormatWrappedCurrency amount={+value} textStyle="subtitle2" />*/}
+            <RkFormatWrappedCurrency amount={+value} textStyle="subtitle2" />
           </Flex>
           <Text style="subtitle2" color="subtle" as="p" css={{ flex: 1 }}>
             {bidData?.expirationTime ? `Expires ${timeSince}` : 'No Expiration'}

@@ -1,4 +1,4 @@
-import useEnvChain from 'hooks/useEnvChain'
+import useEvmChain from 'hooks/useEvmChain'
 import Link from 'next/link'
 import { FC } from 'react'
 
@@ -16,7 +16,7 @@ type Props = {
 const NavbarLogo: FC<Props> = ({ variant, className }) => {
   const logo = NAVBAR_LOGO || '/reservoir.svg'
   const desktopLogo = DESKTOP_NAVBAR_LOGO || '/reservoir-desktop.svg'
-  const chain = useEnvChain()
+  const chain = useEvmChain()
   let logoAlt = 'Logo'
 
   if (SOURCE_NAME) {

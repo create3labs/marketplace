@@ -53,6 +53,7 @@ import { constants } from 'ethers'
 import { formatBN } from '../../../lib/numbers'
 import wrappedContracts from '../../../constants/wrappedContracts'
 import useFallbackState from '../../../hooks/useFallbackState'
+import useEvmChain from '../../../hooks/useEvmChain'
 
 export enum ModalSize {
   MD,
@@ -178,6 +179,8 @@ export default function BidModalWrapper({
     address: address,
     watch: open,
   })
+  const evmChain = useEvmChain()
+  const currencyName = evmChain?.nativeCurrency?.name ?? 'TXL'
 
   const [attributesSelectable, setAttributesSelectable] = useState(false)
   const [attributeSelectorOpen, setAttributeSelectorOpen] = useState(false)
@@ -196,7 +199,7 @@ export default function BidModalWrapper({
 
   const wrappedContractAddress = wrappedContracts[45000]
 
-  const usdPrice = useCoinConversion('USD', 'TXL')
+  const usdPrice = useCoinConversion('USD', currencyName)
 
   const minimumDate = dayjs().add(1, 'h').format('MM/DD/YYYY h:mm A')
 
@@ -297,7 +300,7 @@ export default function BidModalWrapper({
             // From Wrapping ETH to Wrapping TXL
             switch (stepData.currentStep.action) {
               case 'Wrapping ETH': {
-                setStepTitle('Wrapping TXL')
+                setStepTitle(`Wrapping ${currencyName}`)
                 break
               }
             }
@@ -394,7 +397,7 @@ export default function BidModalWrapper({
                 <MainContainer css={{ p: '$4' }}>
                   {isBanned && (
                     <ErrorWell
-                      message="Token is not tradable on OpenSea"
+                      message="Token is not tradable on this marketplace."
                       css={{ mb: '$2', p: '$2', borderRadius: 4 }}
                     />
                   )}
@@ -427,7 +430,7 @@ export default function BidModalWrapper({
                         css={{ height: 20 }}
                         address="0x6405B66E6F27c32ADeFA43C24FD1e3d09769b560"
                       />
-                      WTXL
+                      W{currencyName}
                     </Text>
                     <Input
                       type="number"
@@ -690,7 +693,7 @@ export default function BidModalWrapper({
                           onClick={placeBid}
                         >
                           <Text style="h6" color="button" ellipsify>
-                            Convert {amountToWrap} {balance?.symbol || 'TXL'}{' '}
+                            Convert {amountToWrap} {balance?.symbol || currencyName}{' '}
                             for me
                           </Text>
                         </Button>
@@ -755,8 +758,8 @@ export default function BidModalWrapper({
                           style="body3"
                           color="subtle"
                         >
-                          We&apos;ll ask your approval for converting TXL to
-                          WTXL. Gas fee required.
+                          We&apos;ll ask your approval for converting {currencyName} to
+                          W{currencyName}. Gas fee required.
                         </Text>
                       )}
                       {stepData.currentStep.action !== 'Wrapping ETH' && (

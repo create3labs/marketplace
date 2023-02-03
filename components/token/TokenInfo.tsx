@@ -1,4 +1,4 @@
-import useEnvChain from 'hooks/useEnvChain'
+import useEvmChain from 'hooks/useEvmChain'
 import { truncateAddress } from 'lib/truncateText'
 import React, { FC, useState } from 'react'
 import { FiExternalLink, FiRefreshCcw } from 'react-icons/fi'
@@ -15,10 +15,10 @@ type Props = {
 
 const TokenInfo: FC<Props> = ({ token, tokenInfoButtons }) => {
   const [refreshLoading, setRefreshLoading] = useState(false)
-  const envChain = useEnvChain()
+  const evmChain = useEvmChain()
 
   const blockExplorerBaseUrl =
-    envChain?.blockExplorers?.default?.url || 'https://etherscan.io'
+    evmChain?.blockExplorers?.default?.url || 'https://etherscan.io'
 
   async function refreshToken(token: string | undefined) {
     function handleError(message?: string) {

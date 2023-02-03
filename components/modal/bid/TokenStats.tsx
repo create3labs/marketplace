@@ -57,7 +57,7 @@ const TokenStats: FC<Props> = ({ token, collection, trait }) => {
           : collection?.topBid?.price?.amount?.native
           ? collection?.topBid?.price?.amount?.native
           : null,
-      asWrapped: false,
+      asWrapped: true,
     }
   )
 
