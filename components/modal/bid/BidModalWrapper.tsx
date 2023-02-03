@@ -693,8 +693,8 @@ export default function BidModalWrapper({
                           onClick={placeBid}
                         >
                           <Text style="h6" color="button" ellipsify>
-                            Convert {amountToWrap} {balance?.symbol || currencyName}{' '}
-                            for me
+                            Convert {amountToWrap}{' '}
+                            {balance?.symbol || currencyName} for me
                           </Text>
                         </Button>
                       </Flex>
@@ -758,8 +758,8 @@ export default function BidModalWrapper({
                           style="body3"
                           color="subtle"
                         >
-                          We&apos;ll ask your approval for converting {currencyName} to
-                          W{currencyName}. Gas fee required.
+                          We&apos;ll ask your approval for converting{' '}
+                          {currencyName} to W{currencyName}. Gas fee required.
                         </Text>
                       )}
                       {stepData.currentStep.action !== 'Wrapping ETH' && (
