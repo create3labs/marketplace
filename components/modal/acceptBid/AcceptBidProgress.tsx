@@ -1,4 +1,10 @@
-import { Anchor, Box, Flex, Text, TransactionProgress } from '../../reservoirComponents'
+import {
+  Anchor,
+  Box,
+  Flex,
+  Text,
+  TransactionProgress,
+} from '../../reservoirComponents'
 import React, { FC } from 'react'
 import { AcceptBidStep, StepData } from './AcceptBidModalWrapper'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -16,13 +22,12 @@ type Props = {
 }
 
 export const AcceptBidProgress: FC<Props> = ({
-                                      acceptBidStep,
-                                      etherscanBaseUrl,
-                                      marketplace,
-                                      tokenImage,
-                                      stepData,
-                                    }) => {
-
+  acceptBidStep,
+  etherscanBaseUrl,
+  marketplace,
+  tokenImage,
+  stepData,
+}) => {
   return (
     <Flex
       direction="column"

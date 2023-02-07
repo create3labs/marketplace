@@ -5,7 +5,7 @@ import { useCollections, useTokens } from '@reservoir0x/reservoir-kit-ui'
 type TokenLineItemProps = {
   tokenDetails: NonNullable<
     NonNullable<ReturnType<typeof useTokens>>['data']
-    >[0]
+  >[0]
   collection?: NonNullable<ReturnType<typeof useCollections>['data']>[0]
   usdConversion?: number
   isSuspicious?: Boolean
@@ -22,18 +22,18 @@ type TokenLineItemProps = {
 }
 
 const TokenLineItem: FC<TokenLineItemProps> = ({
-                                                 tokenDetails,
-                                                 collection,
-                                                 usdConversion = 0,
-                                                 isSuspicious,
-                                                 isUnavailable,
-                                                 price,
-                                                 warning,
-                                                 currency,
-                                                 expires,
-                                                 isOffer,
-                                                 sourceImg,
-                                               }) => {
+  tokenDetails,
+  collection,
+  usdConversion = 0,
+  isSuspicious,
+  isUnavailable,
+  price,
+  warning,
+  currency,
+  expires,
+  isOffer,
+  sourceImg,
+}) => {
   if (!tokenDetails) {
     return null
   }

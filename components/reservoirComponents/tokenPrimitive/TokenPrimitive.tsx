@@ -30,19 +30,19 @@ const Img = styled('img', {
 })
 
 const TokenPrimitive: FC<Props> = ({
-                                     img,
-                                     name,
-                                     collection,
-                                     currencyContract,
-                                     currencyDecimals,
-                                     expires,
-                                     warning,
-                                     isOffer,
-                                     source,
-                                     usdPrice,
-                                     price,
-                                     isUnavailable,
-                                   }) => {
+  img,
+  name,
+  collection,
+  currencyContract,
+  currencyDecimals,
+  expires,
+  warning,
+  isOffer,
+  source,
+  usdPrice,
+  price,
+  isUnavailable,
+}) => {
   return (
     <Box>
       <Flex css={{ justifyContent: 'space-between', alignItems: 'center' }}>

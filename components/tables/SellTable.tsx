@@ -3,10 +3,7 @@ import { DateTime } from 'luxon'
 import Link from 'next/link'
 import { optimizeImage } from 'lib/optmizeImage'
 import Toast from 'components/Toast'
-import {
-  useUserTopBids,
-  ListModal,
-} from '@reservoir0x/reservoir-kit-ui'
+import { useUserTopBids, ListModal } from '@reservoir0x/reservoir-kit-ui'
 import { useInView } from 'react-intersection-observer'
 import LoadingIcon from 'components/LoadingIcon'
 import useCoinConversion from 'hooks/useCoinConversion'

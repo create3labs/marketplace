@@ -76,21 +76,20 @@ function titleForStep(step: BuyStep) {
 // BuyModal.Custom - (Also Called Renderer - Data Layer Component) | is https://github.com/reservoirprotocol/reservoir-kit/blob/3773ef2af129451a86c98cc15131158539b1b6c0/packages/ui/src/modal/buy/BuyModalRenderer.tsx
 // CustomReservoirModal - Actual Modal that renders front-end components | is https://github.com/reservoirprotocol/reservoir-kit/blob/main/packages/ui/src/modal/Modal.tsx
 
-
 export function BuyModalWrapper({
-                           openState,
-                           trigger,
-                           tokenId,
-                           collectionId,
-                           orderId,
-                           referrer,
-                           referrerFeeBps,
-                           normalizeRoyalties,
-                           onPurchaseComplete,
-                           onPurchaseError,
-                           onClose,
-                           onGoToToken,
-                         }: Props): ReactElement {
+  openState,
+  trigger,
+  tokenId,
+  collectionId,
+  orderId,
+  referrer,
+  referrerFeeBps,
+  normalizeRoyalties,
+  onPurchaseComplete,
+  onPurchaseError,
+  onClose,
+  onGoToToken,
+}: Props): ReactElement {
   const [open, setOpen] = useFallbackState(
     openState ? openState[0] : false,
     openState
@@ -99,8 +98,9 @@ export function BuyModalWrapper({
   const { chain: activeChain } = useNetwork()
   const evmChain = useEvmChain()
   const blockExplorerBaseUrl =
-    evmChain?.blockExplorers?.default?.url
-    || activeChain?.blockExplorers?.default?.url || 'https://explorer.autobahn.network/'
+    evmChain?.blockExplorers?.default?.url ||
+    activeChain?.blockExplorers?.default?.url ||
+    'https://explorer.autobahn.network/'
 
   return (
     <BuyModal.Custom
@@ -113,30 +113,30 @@ export function BuyModalWrapper({
       normalizeRoyalties={normalizeRoyalties}
     >
       {({
-          token,
-          collection,
-          listing,
-          quantityAvailable,
-          quantity,
-          currency,
-          totalPrice,
-          referrerFee,
-          buyStep,
-          transactionError,
-          hasEnoughCurrency,
-          steps,
-          stepData,
-          feeUsd,
-          totalUsd,
-          usdPrice,
-          isBanned,
-          balance,
-          address,
-          // blockExplorerBaseUrl,
-          setQuantity,
-          setBuyStep,
-          buyToken,
-        }) => {
+        token,
+        collection,
+        listing,
+        quantityAvailable,
+        quantity,
+        currency,
+        totalPrice,
+        referrerFee,
+        buyStep,
+        transactionError,
+        hasEnoughCurrency,
+        steps,
+        stepData,
+        feeUsd,
+        totalUsd,
+        usdPrice,
+        isBanned,
+        balance,
+        address,
+        // blockExplorerBaseUrl,
+        setQuantity,
+        setBuyStep,
+        buyToken,
+      }) => {
         const title = titleForStep(buyStep)
 
         // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -189,8 +189,8 @@ export function BuyModalWrapper({
             onBack={
               buyStep == BuyStep.AddFunds
                 ? () => {
-                  setBuyStep(BuyStep.Checkout)
-                }
+                    setBuyStep(BuyStep.Checkout)
+                  }
                 : null
             }
             open={open}
@@ -537,7 +537,8 @@ export function BuyModalWrapper({
                     <Popover
                       content={
                         <Text style={'body2'}>
-                          Purchase Autobahn native tokens on start.autobahn.network{' '}
+                          Purchase Autobahn native tokens on
+                          start.autobahn.network{' '}
                           <Anchor
                             css={{ fontSize: 12 }}
                             href="https://start.autobahn.network/"

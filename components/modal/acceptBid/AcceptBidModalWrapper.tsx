@@ -19,7 +19,10 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Fees from './Fees'
 import { useNetwork } from 'wagmi'
-import { AcceptBidModal, useReservoirClient } from '@reservoir0x/reservoir-kit-ui'
+import {
+  AcceptBidModal,
+  useReservoirClient,
+} from '@reservoir0x/reservoir-kit-ui'
 import useFallbackState from '../../../hooks/useFallbackState'
 import useTimeSince from '../../../hooks/useTimeSince'
 import { Execute } from '@reservoir0x/reservoir-kit-client'
@@ -75,19 +78,18 @@ function titleForStep(step: AcceptBidStep) {
 // AcceptBid.Custom - (Also Called Renderer - Data Layer Component) | is https://github.com/reservoirprotocol/reservoir-kit/blob/3773ef2af129451a86c98cc15131158539b1b6c0/packages/ui/src/modal/acceptBid/AcceptBidModalRenderer.tsx
 // CustomReservoirModal - Actual Modal that renders front-end components | is https://github.com/reservoirprotocol/reservoir-kit/blob/main/packages/ui/src/modal/Modal.tsx
 
-
 export function AcceptBidModalWrapper({
-                                 openState,
-                                 trigger,
-                                 tokenId,
-                                 collectionId,
-                                 bidId,
-                                 normalizeRoyalties,
-                                 onBidAccepted,
-                                 onClose,
-                                 onBidAcceptError,
-                                 onCurrentStepUpdate,
-                               }: Props): ReactElement {
+  openState,
+  trigger,
+  tokenId,
+  collectionId,
+  bidId,
+  normalizeRoyalties,
+  onBidAccepted,
+  onClose,
+  onBidAcceptError,
+  onCurrentStepUpdate,
+}: Props): ReactElement {
   const [open, setOpen] = useFallbackState(
     openState ? openState[0] : false,
     openState
@@ -104,24 +106,24 @@ export function AcceptBidModalWrapper({
       normalizeRoyalties={normalizeRoyalties}
     >
       {({
-          token,
-          collection,
-          source,
-          expiration,
-          totalPrice,
-          bidAmount,
-          bidAmountCurrency,
-          ethBidAmount,
-          fees,
-          acceptBidStep,
-          transactionError,
-          txHash,
-          // totalUsd,
-          // usdPrice,
-          address,
-          stepData,
-          acceptBid,
-        }) => {
+        token,
+        collection,
+        source,
+        expiration,
+        totalPrice,
+        bidAmount,
+        bidAmountCurrency,
+        ethBidAmount,
+        fees,
+        acceptBidStep,
+        transactionError,
+        txHash,
+        // totalUsd,
+        // usdPrice,
+        address,
+        stepData,
+        acceptBid,
+      }) => {
         const title = titleForStep(acceptBidStep)
 
         // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -130,7 +132,9 @@ export function AcceptBidModalWrapper({
         // eslint-disable-next-line react-hooks/rules-of-hooks
         const usdPrice = useCoinConversion('USD', currencyName)
         const totalUsd = totalPrice * (usdPrice || 0)
-        const etherscanBaseUrl = evmChain?.blockExplorers?.default?.url || 'https://explorer.autobahn.network/'
+        const etherscanBaseUrl =
+          evmChain?.blockExplorers?.default?.url ||
+          'https://explorer.autobahn.network/'
 
         // eslint-disable-next-line react-hooks/rules-of-hooks
         useEffect(() => {
@@ -290,8 +294,8 @@ export function AcceptBidModalWrapper({
             )}
 
             {(acceptBidStep === AcceptBidStep.Confirming ||
-                acceptBidStep === AcceptBidStep.Finalizing ||
-                acceptBidStep === AcceptBidStep.ApproveMarketplace) &&
+              acceptBidStep === AcceptBidStep.Finalizing ||
+              acceptBidStep === AcceptBidStep.ApproveMarketplace) &&
               token && (
                 <Flex direction="column">
                   <TokenLineItem
