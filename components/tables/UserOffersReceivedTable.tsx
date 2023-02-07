@@ -3,7 +3,7 @@ import { DateTime } from 'luxon'
 import Link from 'next/link'
 import { optimizeImage } from 'lib/optmizeImage'
 import Toast from 'components/Toast'
-import { useUserTopBids, AcceptBidModal } from '@reservoir0x/reservoir-kit-ui'
+import { useUserTopBids } from '@reservoir0x/reservoir-kit-ui'
 import { useInView } from 'react-intersection-observer'
 import { useRouter } from 'next/router'
 import LoadingIcon from 'components/LoadingIcon'
@@ -15,6 +15,7 @@ import InfoTooltip from 'components/InfoTooltip'
 import { useMediaQuery } from '@react-hookz/web'
 import FormatNativeCrypto from 'components/FormatNativeCrypto'
 import Tooltip from 'components/Tooltip'
+import { AcceptBidModalWrapper } from '../modal/acceptBid/AcceptBidModalWrapper'
 
 const API_BASE =
   process.env.NEXT_PUBLIC_RESERVOIR_API_BASE || 'https://api.reservoir.tools'
@@ -205,7 +206,19 @@ const UserOffersReceivedTable: FC<Props> = ({
                   </div>
                   <div className="text-xs font-light text-neutral-600 dark:text-neutral-300">{`Expires ${expiration}`}</div>
                 </div>
-                <AcceptBidModal
+                {/*Old AcceptBidModal replaced with AcceptBidModalWrapper*/}
+                {/*<AcceptBidModal*/}
+                {/*  trigger={*/}
+                {/*    <button className="btn-primary-outline min-w-[120px] bg-white py-[3px] text-sm text-black dark:border-neutral-600 dark:bg-black dark:text-white dark:ring-primary-900 dark:focus:ring-4">*/}
+                {/*      Accept*/}
+                {/*    </button>*/}
+                {/*  }*/}
+                {/*  collectionId={contract}*/}
+                {/*  tokenId={tokenId}*/}
+                {/*  onClose={() => data.mutate()}*/}
+                {/*  onBidAcceptError={onBidAcceptError}*/}
+                {/*/>*/}
+                <AcceptBidModalWrapper
                   trigger={
                     <button className="btn-primary-outline min-w-[120px] bg-white py-[3px] text-sm text-black dark:border-neutral-600 dark:bg-black dark:text-white dark:ring-primary-900 dark:focus:ring-4">
                       Accept
@@ -443,7 +456,19 @@ const UserOffersReceivedTable: FC<Props> = ({
                 {isOwner && (
                   <td className="sticky top-0 right-0 whitespace-nowrap dark:text-white">
                     <div className="flex items-center">
-                      <AcceptBidModal
+                      {/*Old AcceptBidModal replaced with AcceptBidModalWrapper*/}
+                      {/*<AcceptBidModal*/}
+                      {/*  trigger={*/}
+                      {/*    <button className="btn-primary-outline min-w-[120px] bg-white py-[3px] text-sm text-black dark:border-neutral-600 dark:bg-black dark:text-white dark:ring-primary-900 dark:focus:ring-4">*/}
+                      {/*      Accept*/}
+                      {/*    </button>*/}
+                      {/*  }*/}
+                      {/*  collectionId={contract}*/}
+                      {/*  tokenId={tokenId}*/}
+                      {/*  onClose={() => data.mutate()}*/}
+                      {/*  onBidAcceptError={onBidAcceptError}*/}
+                      {/*/>*/}
+                      <AcceptBidModalWrapper
                         trigger={
                           <button className="btn-primary-outline min-w-[120px] bg-white py-[3px] text-sm text-black dark:border-neutral-600 dark:bg-black dark:text-white dark:ring-primary-900 dark:focus:ring-4">
                             Accept

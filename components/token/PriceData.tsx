@@ -3,9 +3,7 @@ import CancelListing from 'components/CancelListing'
 import CancelOffer from 'components/CancelOffer'
 import {
   ListModal,
-  BidModal,
   useReservoirClient,
-  AcceptBidModal,
   useTokens,
 } from '@reservoir0x/reservoir-kit-ui'
 import React, { ComponentPropsWithoutRef, FC, ReactNode, useState } from 'react'
@@ -28,6 +26,7 @@ import useMounted from 'hooks/useMounted'
 import { useRouter } from 'next/router'
 import { getPricing } from 'lib/token/pricing'
 import BidModalWrapper from 'components/modal/bid/BidModalWrapper'
+import { AcceptBidModalWrapper } from '../modal/acceptBid/AcceptBidModalWrapper'
 
 const CHAIN_ID = process.env.NEXT_PUBLIC_CHAIN_ID
 const SOURCE_ID = process.env.NEXT_PUBLIC_SOURCE_ID
@@ -289,7 +288,8 @@ const PriceData: FC<Props> = ({ details, collection, isOwner }) => {
                   mutate={details.mutate}
                 />
               )}
-              <AcceptBidModal
+              {/*Old AcceptBid Modal replaced with Custom Modal*/}
+              <AcceptBidModalWrapper
                 trigger={
                   showAcceptOffer ? (
                     <button
@@ -353,7 +353,7 @@ const PriceData: FC<Props> = ({ details, collection, isOwner }) => {
               {/*  />*/}
               {/*)}*/}
 
-              {/*New Custom Modal*/}
+              {/*New Custom Bid Modal*/}
               {!isOwner && (
                 <BidModalWrapper
                   collectionId={collection?.id}

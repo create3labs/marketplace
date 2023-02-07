@@ -5,7 +5,6 @@ import { optimizeImage } from 'lib/optmizeImage'
 import Toast from 'components/Toast'
 import {
   useUserTopBids,
-  AcceptBidModal,
   ListModal,
 } from '@reservoir0x/reservoir-kit-ui'
 import { useInView } from 'react-intersection-observer'
@@ -19,6 +18,7 @@ import FormatNativeCrypto from 'components/FormatNativeCrypto'
 import Tooltip from 'components/Tooltip'
 import { setToast } from 'components/token/setToast'
 import { FaBolt } from 'react-icons/fa'
+import { AcceptBidModalWrapper } from '../modal/acceptBid/AcceptBidModalWrapper'
 
 const COLLECTION = process.env.NEXT_PUBLIC_COLLECTION
 const COMMUNITY = process.env.NEXT_PUBLIC_COMMUNITY
@@ -181,7 +181,20 @@ const SellTable: FC<Props> = ({ modal, isOwner, address }) => {
                 </div>
               </div>
               <div className="flex items-center justify-center pt-4">
-                <AcceptBidModal
+                {/*Old AcceptBidModal replaced with AcceptBidModalWrapper*/}
+                {/*<AcceptBidModal*/}
+                {/*  trigger={*/}
+                {/*    <button className="btn-primary-fill mr-2 w-full min-w-[120px] py-2 text-sm focus:ring-0 sm:w-auto">*/}
+                {/*      <FaBolt />*/}
+                {/*      Sell*/}
+                {/*    </button>*/}
+                {/*  }*/}
+                {/*  collectionId={contract}*/}
+                {/*  tokenId={tokenId}*/}
+                {/*  onClose={() => data.mutate()}*/}
+                {/*  onBidAcceptError={onBidAcceptError}*/}
+                {/*/>*/}
+                <AcceptBidModalWrapper
                   trigger={
                     <button className="btn-primary-fill mr-2 w-full min-w-[120px] py-2 text-sm focus:ring-0 sm:w-auto">
                       <FaBolt />
@@ -407,7 +420,20 @@ const SellTable: FC<Props> = ({ modal, isOwner, address }) => {
 
                 <td className="whitespace-nowrap dark:text-white">
                   <div className="flex items-center">
-                    <AcceptBidModal
+                    {/*Old AcceptBidModal replaced with AcceptBidModalWrapper*/}
+                    {/*<AcceptBidModal*/}
+                    {/*  trigger={*/}
+                    {/*    <button className="btn-primary-fill mr-3 min-w-[120px] justify-center py-2 text-sm">*/}
+                    {/*      <FaBolt />*/}
+                    {/*      Sell*/}
+                    {/*    </button>*/}
+                    {/*  }*/}
+                    {/*  collectionId={contract}*/}
+                    {/*  tokenId={tokenId}*/}
+                    {/*  onClose={() => data.mutate()}*/}
+                    {/*  onBidAcceptError={onBidAcceptError}*/}
+                    {/*/>*/}
+                    <AcceptBidModalWrapper
                       trigger={
                         <button className="btn-primary-fill mr-3 min-w-[120px] justify-center py-2 text-sm">
                           <FaBolt />
